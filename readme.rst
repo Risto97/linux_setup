@@ -56,14 +56,16 @@ git config --global user.email "risto.pejasinovic@gmail.com"
 
 sudo pacman -S firefox thunderbird htop qalculate-gtk
 sudo pacman -S thunar
-git clone git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d --branch develop
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d --branch develop
 
 git clone https://github.com/Risto97/linux_setup.git ~/linux_setup/
 cd ~/linux_setup/configs
 ./install.sh
 
-
-
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
 
 Enable network manager, disable DHCPCD
 https://evilshit.wordpress.com/2012/09/15/how-to-make-networkmanager-and-network-manager-applet-work-on-arch-linux-with-gnome3/
