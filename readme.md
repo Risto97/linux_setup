@@ -63,6 +63,11 @@ git clone https://github.com/Risto97/linux_setup.git ~/linux_setup/
 cd ~/linux_setup/configs
 ./install.sh
 
+##### for system python pip #####
+sudo pacman -S pip-python
+##### for scratchpad windows script #####
+pip install six
+
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -89,6 +94,8 @@ sudo pacman -S viewnior
 sudo pacman -S feh
 
 sudo pacman -S evince
+yay -S wps-office
+sudo pacman -S vlc
 
 sudo pacman -S dunst
 sudo pacman -S libnotify

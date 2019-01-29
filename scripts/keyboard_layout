@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# python /home/risto/scripts/keyboard_layout.py
+
+xkb_ret=$(/home/risto/linux_setup/scripts/xkblayout-state print '%n %v')
+if [ "$xkb_ret" = "English " ]; then
+    echo "English"
+elif [ "$xkb_ret" = "Serbian latin" ]; then
+    echo "Srpski "
+elif [ "$xkb_ret" = "Serbian " ]; then
+    echo "Српски "
+else
+    echo $xkb_ret
+fi
