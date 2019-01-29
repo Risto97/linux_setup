@@ -11,3 +11,5 @@ ln -s $(pwd)/.spacemacs ~/.spacemacs
 
 rm -rf ~/.config/rofi
 ln -s $(pwd)/rofi/ ~/.config/
+
+cp fonts/fontawesome-webfont.ttf ~/.fonts/
