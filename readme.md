@@ -98,6 +98,18 @@ sudo chown -R risto /tools/
 
 sudo pacman -S alsa-lib alsa-plugins pulseaudio-alsa zita-alsa-pcmi alsa-utils pavucontrol
 
+echo "alias ll='ls -alF'" >> ~/.bashrc
+
+#### mount your drives with gnome-disks ####
+sudo pacman -S gnome-disk-utility
+
+#### Enable multilib repo ###
+### uncomment two lines in /etc/pacman.conf ###
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+
+sudo pacman -Sy multilib
+
 Enable network manager, disable DHCPCD
 https://evilshit.wordpress.com/2012/09/15/how-to-make-networkmanager-and-network-manager-applet-work-on-arch-linux-with-gnome3/
 ```
