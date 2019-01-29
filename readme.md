@@ -107,8 +107,18 @@ sudo pacman -S gnome-disk-utility
 ### uncomment two lines in /etc/pacman.conf ###
 [multilib]
 Include = /etc/pacman.d/mirrorlist
-
 sudo pacman -Sy multilib
+
+sudo pacman -S graphviz
+sudo pacman -S tk
+sudo pacman -S xdotool
+sudo pacman -S xorg-xprop
+sudo pacman -S gperf
+
+#### VIVADO ####
+yay -S ncurses5-compat-libs
+sudo pacman -S libpng12
+sudo pacman -S lib32-libpng12
 
 Enable network manager, disable DHCPCD
 https://evilshit.wordpress.com/2012/09/15/how-to-make-networkmanager-and-network-manager-applet-work-on-arch-linux-with-gnome3/

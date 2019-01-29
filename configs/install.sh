@@ -18,3 +18,6 @@ cp fonts/fontawesome-webfont.ttf ~/.fonts
 
 rm -rf ~/.config/dunst
 ln -s $(pwd)/dunst ~/.config/
+
+rm -rf ~/.config/htop
+ln -s $(pwd)/htop ~/.config/
