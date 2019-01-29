@@ -85,6 +85,7 @@ sudo pacman -S thunar-volman
 sudo pacman -S thunar
 sudo pacman -S tumbler
 sudo pacman -S viewnior
+sudo pacman -S feh
 
 sudo pacman -S evince
 
