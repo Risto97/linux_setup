@@ -1,3 +1,4 @@
+```
 cfdisk
 mkfs.ext4 /dev/sdxy
 
@@ -99,3 +100,4 @@ sudo pacman -S alsa-lib alsa-plugins pulseaudio-alsa zita-alsa-pcmi alsa-utils p
 
 Enable network manager, disable DHCPCD
 https://evilshit.wordpress.com/2012/09/15/how-to-make-networkmanager-and-network-manager-applet-work-on-arch-linux-with-gnome3/
+```
