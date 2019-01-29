@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p ~/.config
 rm ~/.config/compton.conf
 ln -s $(pwd)/compton.conf ~/.config
 
@@ -12,4 +13,8 @@ ln -s $(pwd)/.spacemacs ~/.spacemacs
 rm -rf ~/.config/rofi
 ln -s $(pwd)/rofi/ ~/.config/
 
-cp fonts/fontawesome-webfont.ttf ~/.fonts/
+mkdir -p ~/.fonts
+cp fonts/fontawesome-webfont.ttf ~/.fonts
+
+rm -rf ~/.config/dunst
+ln -s $(pwd)/dunst ~/.config/

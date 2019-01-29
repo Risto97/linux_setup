@@ -118,8 +118,8 @@ bindsym $mod+Shift+Prior scratchpad show; floating disable; exec pkill -RTMIN+10
 
 
 # Pulse Audio controls
-bindsym $mod+KP_Add exec --no-startup-id /home/risto/scripts/PulseAudioVolume/incrVolume.sh; exec python3 /home/risto/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #increase sound volume
-bindsym $mod+KP_Subtract exec --no-startup-id /home/risto/scripts/PulseAudioVolume/decrVolume.sh; exec python3 /home/risto/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #decrease sound volume
+bindsym $mod+KP_Add exec --no-startup-id python3 /home/risto/linux_setup/scripts/PulseAudioVolume/incrVolume.py; exec python3 /home/risto/linux_setup/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #increase sound volume
+bindsym $mod+KP_Subtract exec --no-startup-id python3 /home/risto/linux_setup/scripts/PulseAudioVolume/decrVolume.py; exec python3 /home/risto/linux_setup/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #decrease sound volume
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # load keyboard layouts
@@ -249,6 +249,8 @@ for_window [class="Viewnior"] floating enable, resize grow left 200, resize grow
 # exec python /home/risto/scripts/wallpaper/wallpaper.py
 exec --no-startup-id feh --bg-scale $HOME/scripts/wallpaper/background.png
 exec --no-startup-id compton -f
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id thunderbird
 exec --no-startup-id i3-msg 'workspace Emacs; exec emacs; workspace 1. '
 exec --no-startup-id i3-msg 'workspace ; exec firefox; workspace 1. '
