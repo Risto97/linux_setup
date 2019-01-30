@@ -63,6 +63,10 @@ Check online how to configure grub.
 
    pacman -S grub
 
+.. raw:: pdf
+
+   PageBreak oneColumn
+
 **Set root password, and add user**
 
 .. code-block:: bash
@@ -74,6 +78,7 @@ Check online how to configure grub.
   vi /etc/sudoers
 
 **Reboot PC and boot into ARCH**
+--------------------------------
 
 **Enable Network Manager**
 
@@ -90,7 +95,7 @@ network manager didnt start had to do it again
 .. code-block:: bash
 
   sudo pacman -S xorg-server xorg-xinit
-  sudo pacman -S xterm # startx wont work without this, probably uneccesary with wm or de
+  sudo pacman -S xterm # install xterm just to check if startx is working
 
   sudo pacman -S i3wm i3blocks xfce4-terminal rofi compton
   sudo pacman -S slim slim-themes
@@ -146,10 +151,6 @@ network manager didnt start had to do it again
 
   sudo pacman -S pip-python
   pip install six
-
-.. raw:: pdf
-
-   PageBreak oneColumn
 
 **Setup pyenv**
 
