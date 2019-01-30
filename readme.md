@@ -92,6 +92,7 @@ sudo pacman -S thunar
 sudo pacman -S tumbler
 sudo pacman -S viewnior
 sudo pacman -S feh
+sudo pacman -S transmission-gtk
 
 sudo pacman -S evince
 yay -S wps-office

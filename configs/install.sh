@@ -21,3 +21,7 @@ ln -s $(pwd)/dunst ~/.config/
 
 rm -rf ~/.config/htop
 ln -s $(pwd)/htop ~/.config/
+
+mkdir -p ~/.config/xfce4/
+rm -rf ~/.config/xfce4/terminal
+ln -s $(pwd)/xfce4/terminal ~/.config/xfce4/terminal
