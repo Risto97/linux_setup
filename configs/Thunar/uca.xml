@@ -1,0 +1,23 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1548775678709087-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon></icon>
+	<name>Search current dir</name>
+	<unique-id>1548962614316792-1</unique-id>
+	<command>rm /tmp/search_tmp ; updatedb -U $(pwd) -l 0 -o /tmp/search_tmp &amp;&amp; locate -d /tmp/search_tmp &quot;&quot; | rofi -threads 0 -width 100 -dmenu -i -p &quot;locate:&quot; | xargs -r -0 xdg-open
+</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>

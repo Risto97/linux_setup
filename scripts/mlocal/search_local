@@ -1,0 +1,5 @@
+#!/bin/bash
+
+updatedb -e "/media /mnt" -l 0 -o  localdb
+
+locate -d localdb "" | rofi -threads 0 -width 100 -dmenu -i -p "locate:" | xargs -r -0 xdg-open

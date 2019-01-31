@@ -21,7 +21,7 @@
 ! "Always show number of lines" Set from: Default
 ! rofi.fixed-num-lines:                true
 ! "Whether to load and show icons" Set from: Default
-! rofi.show-icons:                     false
+rofi.show-icons:                     true
 ! "Terminal to use" Set from: Default
 ! rofi.terminal:                       rofi-sensible-terminal
 ! "Ssh client to use" Set from: Default
@@ -39,7 +39,7 @@
 ! "Window fields to match in window mode" Set from: Default
 ! rofi.window-match-fields:            all
 ! "Theme to use to look for icons" Set from: Default
-! rofi.drun-icon-theme:
+rofi.drun-icon-theme:              Adwaita
 ! "Desktop entry fields to match in drun" Set from: Default
 ! rofi.drun-match-fields:              name,generic,exec,categories
 ! "Disable history in run/ssh" Set from: Default
@@ -181,7 +181,7 @@
 ! "Select next entry" Set from: Default
 ! rofi.kb-row-down:                    Down,Control+n
 ! "Go to next row, if one left, accept it, if no left next mode." Set from: Default
-! rofi.kb-row-tab:                     Tab
+rofi.kb-row-tab:                     Tab
 ! "Go to the previous page" Set from: Default
 ! rofi.kb-page-prev:                   Page_Up
 ! "Go to the next page" Set from: Default

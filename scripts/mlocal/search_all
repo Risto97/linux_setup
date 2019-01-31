@@ -1,0 +1,5 @@
+#!/bin/bash
+
+updatedb -e "/usr /etc /dev /tools /home" -l 0 -o  all.db
+
+locate -d all.db "" | rofi -threads 0 -width 100 -dmenu -i -p "locate:" | xargs -r -0 xdg-open

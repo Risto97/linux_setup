@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir -p ~/.config
+
 rm ~/.config/compton.conf
 ln -s $(pwd)/compton.conf ~/.config
 
@@ -25,3 +26,13 @@ ln -s $(pwd)/htop ~/.config/
 mkdir -p ~/.config/xfce4/
 rm -rf ~/.config/xfce4/terminal
 ln -s $(pwd)/xfce4/terminal ~/.config/xfce4/terminal
+
+mkdir -p ~/.local/share/applications/
+rm ~/.local/share/applications/emacsclient.desktop
+ln -s $(pwd)/mimeapps/applications/emacsclient.desktop ~/.local/share/applications/emacsclient.desktop
+
+rm ~/.config/mimeapps.list
+ln -s $(pwd)/mimeapps/mimeapps.list ~/.config/mimeapps.list
+
+rm -rf ~/.config/Thunar
+ln -s $(pwd)/Thunar ~/.config/

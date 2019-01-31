@@ -164,12 +164,23 @@ network manager didnt start had to do it again
   pyenv install 3.7.2
   pyenv global 3.7.2
 
-**Install fonts**
+**Locate for rofi**
+
+.. code-block:: bash
+
+  sudo vim /etc/sudoers  # add this line %wheel ALL=(ALL) NOPASSWD: /usr/bin/updatedb
+  sudo pacman -S mlocate
+  sudo updatedb
+
+**Ricing**
 
 .. code-block:: bash
 
   sudo pacman -S adobe-source-code-pro-fonts
   sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
+
+  yay -S papirus-maia-icon-theme-git
+  sudo pacman -S lxappearance
 
 **Setup tools directory**
 
