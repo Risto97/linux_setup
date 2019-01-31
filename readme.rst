@@ -101,6 +101,7 @@ network manager didnt start had to do it again
   sudo pacman -S slim slim-themes
   sudo systemctl enable slim.service
   sudo vim /etc/slim.conf
+  sudo pacman -S surfraw
 
   sudo pacman -S network-manager-applet
 

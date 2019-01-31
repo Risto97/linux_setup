@@ -7,7 +7,7 @@
 ! "Number of columns" Set from: Default
 ! rofi.columns:                        1
 ! "Font to use" Set from: Default
- rofi.font:                           mono 12
+rofi.font:                           DejaVu Sans 11
 ! "Border width" Set from: Default
 ! rofi.bw:                             1
 ! "Location on screen" Set from: Default
@@ -181,7 +181,7 @@ rofi.drun-icon-theme:              Adwaita
 ! "Select next entry" Set from: Default
 ! rofi.kb-row-down:                    Down,Control+n
 ! "Go to next row, if one left, accept it, if no left next mode." Set from: Default
-rofi.kb-row-tab:                     Tab
+rofi.kb-row-tab:                     Control+space
 ! "Go to the previous page" Set from: Default
 ! rofi.kb-page-prev:                   Page_Up
 ! "Go to the next page" Set from: Default
@@ -191,7 +191,7 @@ rofi.kb-row-tab:                     Tab
 ! "Go to the last entry" Set from: Default
 ! rofi.kb-row-last:                    End,KP_End
 ! "Set selected item as input text" Set from: Default
-! rofi.kb-row-select:                  Control+space
+rofi.kb-row-select:                  Tab
 ! "Take a screenshot of the rofi window" Set from: Default
 ! rofi.kb-screenshot:                  Alt+S
 ! "Toggle case sensitivity" Set from: Default

@@ -36,3 +36,6 @@ ln -s $(pwd)/mimeapps/mimeapps.list ~/.config/mimeapps.list
 
 rm -rf ~/.config/Thunar
 ln -s $(pwd)/Thunar ~/.config/
+
+rm -rf ~/.config/surfraw
+ln -s $(pwd)/surfraw ~/.config/

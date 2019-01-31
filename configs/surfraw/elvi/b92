@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# AUTHOR: S.S.R. Oemrawsingh
+#
+# DATE: Sat Nov 07 2009
+#
+# DESC: Elvi to search B92
+# elvis: b92		-- Search B92 (www.b92.net)
+. surfraw || exit 1
+
+w3_usage_hook () {
+    cat <<EOF
+Usage: $w3_argv0 [options] [search words]...
+Description:
+  Search B92 (www.b92.com) for videos
+EOF
+    w3_global_usage
+}
+
+w3_config
+w3_parse_args "$@"
+# if test -z "$w3_args"; then
+    w3_browse_url "http://www.b92.net/"
+# else
+#     escaped_args=`w3_url_of_arg $w3_args`
+#     w3_browse_url "http://www.b92.net/results?search_query=${escaped_args}"
+# fi
