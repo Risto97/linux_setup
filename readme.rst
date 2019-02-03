@@ -122,7 +122,7 @@ network manager didnt start had to do it again
   git clone https://aur.archlinux.org/yay.git ~/.yay
   cd ~/.yay
   makepkg -si
-  yay -S yad
+  yay -S yad-gtk2
 
 **Install some apps**
 
@@ -133,6 +133,7 @@ network manager didnt start had to do it again
   sudo pacman -S viewnior feh vlc
   sudo pacman -S transmission-gtk
   sudo pacman -S evince
+  sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu
   yay -S wps-office
   sudo pacman -S dunst libnotify
 
@@ -165,13 +166,15 @@ network manager didnt start had to do it again
   pyenv install 3.7.2
   pyenv global 3.7.2
 
-**Locate for rofi**
+**Search tools**
 
 .. code-block:: bash
 
   sudo vim /etc/sudoers  # add this line %wheel ALL=(ALL) NOPASSWD: /usr/bin/updatedb
   sudo pacman -S mlocate
   sudo updatedb
+
+  sudo pacman -S ripgrep
 
 **Ricing**
 
