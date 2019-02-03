@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# AUTHOR: S.S.R. Oemrawsingh
+#
+# DATE: Sat Nov 07 2009
+#
+# DESC: Elvi to search FTN
+# elvis: ftn
+. surfraw || exit 1
+
+w3_usage_hook () {
+    cat <<EOF
+Usage: $w3_argv0 [options] [search words]...
+EOF
+    w3_global_usage
+}
+
+w3_config
+w3_parse_args "$@"
+w3_browse_url "http://www.ftn.uns.ac.rs/"

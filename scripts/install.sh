@@ -1,14 +1,25 @@
 #!/bin/bash
 
-printf "\n" >> ~/.bash_profile
-printf 'export PATH="$PATH:' >> ~/.bash_profile
-printf $(pwd)/PulseAudioVolume >> ~/.bash_profile
-printf '"\n' >> ~/.bash_profile
-echo export PULSEAUDIOSCRIPTS_DIR="$(pwd)/PulseAudioVolume/" >> ~/.bash_profile
+variables_fn=variables.sh
+rm $variables_fn
 
-printf 'export PATH="$PATH:' >> ~/.bash_profile
-printf $(pwd) >> ~/.bash_profile
-printf '"\n' >> ~/.bash_profile
-printf 'export PATH="$PATH:' >> ~/.bash_profile
-printf $(pwd)/mlocal >> ~/.bash_profile
-printf '"\n' >> ~/.bash_profile
+printf "#!/bin/bash\n" >> $variables_fn
+printf "\n" >> $variables_fn
+printf 'export PATH="$PATH:' >> $variables_fn
+printf $(pwd)/PulseAudioVolume >> $variables_fn
+printf '"\n' >> $variables_fn
+echo export PULSEAUDIOSCRIPTS_DIR="$(pwd)/PulseAudioVolume/" >> $variables_fn
+
+printf 'export PATH="$PATH:' >> $variables_fn
+printf $(pwd) >> $variables_fn
+printf '"\n' >> $variables_fn
+printf 'export PATH="$PATH:' >> $variables_fn
+printf $(pwd)/search_tool/search_scripts >> $variables_fn
+printf '"\n' >> $variables_fn
+printf 'export PATH="$PATH:' >> $variables_fn
+printf $(pwd)/search_tool >> $variables_fn
+printf '"\n' >> $variables_fn
+echo export SEARCH_SCRIPTS_DIR="$(pwd)/search_tool/search_scripts/" >> $variables_fn
+
+printf "Append this to bash_profile or profile: \n"
+printf "source $(pwd)/$variables_fn\n"

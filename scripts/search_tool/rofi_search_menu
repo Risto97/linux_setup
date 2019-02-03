@@ -1,0 +1,3 @@
+#!/bin/bash
+
+$(ls $SEARCH_SCRIPTS_DIR  | grep search | rofi -dmenu -p "search scripts: ")

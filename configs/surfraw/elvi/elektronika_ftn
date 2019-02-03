@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# AUTHOR: S.S.R. Oemrawsingh
+#
+# DATE: Sat Nov 07 2009
+#
+# DESC: Elvi to search ELEKTRONIKA_FTN
+# elvis: elektronika_ftn
+. surfraw || exit 1
+
+w3_usage_hook () {
+    cat <<EOF
+Usage: $w3_argv0 [options] [search words]...
+Description:
+  Search ELEKTRONIKA_FTN (https://www.elektronika.ftn.uns.ac.rs)
+EOF
+    w3_global_usage
+}
+
+w3_config
+w3_parse_args "$@"
+w3_browse_url "https://www.elektronika.ftn.uns.ac.rs/"
