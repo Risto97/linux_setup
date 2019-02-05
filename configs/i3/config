@@ -48,6 +48,9 @@ bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+Shift+w exec menu-surfraw
 bindsym $mod+Shift+s exec rofi_search_menu
 
+# Screenshot
+bindsym $mod+Print exec xfce4-screenshooter
+bindsym Print exec xfce4-screenshooter -f
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.

@@ -96,6 +96,7 @@ network manager didnt start had to do it again
 
   sudo pacman -S xorg-server xorg-xinit
   sudo pacman -S xterm # install xterm just to check if startx is working
+  sudo pacman -S xdotool xorg-xev xorg-xprop
 
   sudo pacman -S i3wm i3blocks xfce4-terminal rofi compton
   sudo pacman -S slim slim-themes
@@ -129,6 +130,7 @@ network manager didnt start had to do it again
 .. code-block:: bash
 
   sudo pacman -S firefox thunderbird htop qalculate-gtk
+  sudo pacman -S xfce4-screenshooter
   sudo pacman -S thunar gvfs thunar-volman tumpler
   sudo pacman -S viewnior feh vlc
   sudo pacman -S transmission-gtk
@@ -176,7 +178,7 @@ network manager didnt start had to do it again
 
   sudo pacman -S ripgrep
 
-**Ricing**
+**Visuals**
 
 .. code-block:: bash
 
@@ -223,8 +225,6 @@ network manager didnt start had to do it again
 
   sudo pacman -S graphviz
   sudo pacman -S tk
-  sudo pacman -S xdotool
-  sudo pacman -S xorg-xprop
   sudo pacman -S gperf
 
 
