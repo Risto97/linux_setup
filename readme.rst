@@ -131,12 +131,14 @@ network manager didnt start had to do it again
 
   sudo pacman -S firefox thunderbird htop qalculate-gtk
   sudo pacman -S xfce4-screenshooter
-  sudo pacman -S thunar gvfs thunar-volman tumpler
+  sudo pacman -S lxrandr arandr
+  sudo pacman -S thunar gvfs thunar-volman tumpler engrampa
   sudo pacman -S viewnior feh vlc
   sudo pacman -S transmission-gtk
   sudo pacman -S evince
   sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu
   yay -S wps-office
+  yay -S gitflow-git
   sudo pacman -S dunst libnotify
 
 **Clone git repo for config and scripts, and install**
@@ -235,3 +237,16 @@ network manager didnt start had to do it again
   yay -S ncurses5-compat-libs
   sudo pacman -S libpng12
   sudo pacman -S lib32-libpng12
+
+**Text formatting**
+
+.. code-block:: bash
+
+   sudo pacman -S texlive-most
+   pip install Sphinx
+   pip install sphinx-intl
+   pip install sphinxcontrib-tikz
+   sudo pacman -S biber
+   pip install sphinxcontrib-bibtex
+   sudo pacman -S texlive-langcyrillic
+   sudo pacman -S  texlive-langextra

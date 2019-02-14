@@ -33,7 +33,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(markdown
+   '(php
+     markdown
      ansible
      javascript
      ;; ----------------------------------------------------------------
@@ -48,10 +49,12 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-snippets-in-popup t)
      ;; better-defaults
      emacs-lisp
+     latex
      git
      c-c++
      ;; markdown
      neotree
+     restructuredtext
      ;; org
      (python :variables
              python-test-runner 'nose)
@@ -635,7 +638,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (mmm-jinja2 winum toc-org realgud pytest pip-requirements persp-mode paradox neotree live-py-mode hl-todo highlight-numbers highlight-indentation helm-make google-translate git-timemachine git-link eyebrowse evil-surround evil-nerd-commenter evil-magit git-commit dash evil-goggles eval-sexp-fu eshell-prompt-extras doom-modeline eldoc-eval company-anaconda auto-yasnippet auto-compile anaconda-mode aggressive-indent ace-window ace-link tern swiper goto-chg request window-purpose rtags magit-popup with-editor markdown-mode pythonic f spaceline powerline which-key use-package hydra async ztree yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen treepy test-simple symon string-inflection spinner spaceline-all-the-icons smeargle shrink-path shell-pop restart-emacs rainbow-delimiters pyvenv pyenv-mode py-isort prettier-js popwin pippel pipenv pcre2el password-generator parent-mode packed overseer org-plus-contrib org-bullets open-junk-file nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum loc-changes load-relative livid-mode link-hint json-navigator json-mode js2-refactor js-doc jinja2-mode ivy indent-guide importmagic imenu-list hungry-delete highlight-parentheses highlight helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag graphql google-c-style golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-messenger gh-md fuzzy font-lock+ flycheck-rtags flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-snipe evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode disaster diminish define-word cython-mode counsel-projectile company-tern company-statistics company-rtags company-quickhelp company-c-headers company-ansible column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode bind-key auto-highlight-symbol ansible-doc ansible ace-jump-helm-line ac-ispell))))
+    (phpunit phpcbf php-extras php-auto-yasnippets helm-gtags ggtags drupal-mode counsel-gtags company-php ac-php-core xcscope php-mode company-auctex auctex-latexmk auctex ztree yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon string-inflection spaceline-all-the-icons smeargle shell-pop restart-emacs realgud rainbow-delimiters pyvenv pytest pyenv-mode py-isort prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc jinja2-mode indent-guide importmagic hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-rtags flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline disaster diminish define-word cython-mode counsel-projectile company-tern company-statistics company-rtags company-quickhelp company-c-headers company-ansible company-anaconda column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-complete-rst auto-compile ansible-doc ansible aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
