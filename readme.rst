@@ -76,6 +76,8 @@ Check online how to configure grub.
   useradd -m -g wheel risto
   passwd risto
   vi /etc/sudoers
+  sudo usermod -a -G tty risto
+  sudo usermod -a -G uucp risto
 
 **Reboot PC and boot into ARCH**
 --------------------------------
@@ -229,6 +231,11 @@ network manager didnt start had to do it again
   sudo pacman -S tk
   sudo pacman -S gperf
 
+**Install misc python packages**
+
+.. code-block:: bash
+
+   pip install yapf
 
 **Vivado dependencies**
 
