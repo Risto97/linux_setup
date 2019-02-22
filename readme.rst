@@ -93,14 +93,16 @@ network manager didnt start had to do it again
   reboot
 
 **Install Graphical environment (i3wm and slimDM)**
+create .xinitrc if i3 doesnt start
 
 .. code-block:: bash
 
+  sudo pacman -S xf86-video-fbdev xf86-video-vesa # Not for PC, some devices need gpu-drivers like Zynq boards
   sudo pacman -S xorg-server xorg-xinit
   sudo pacman -S xterm # install xterm just to check if startx is working
   sudo pacman -S xdotool xorg-xev xorg-xprop
 
-  sudo pacman -S i3wm i3blocks xfce4-terminal rofi compton
+  sudo pacman -S i3-wm i3blocks xfce4-terminal rofi compton
   sudo pacman -S slim slim-themes
   sudo systemctl enable slim.service
   sudo vim /etc/slim.conf
@@ -113,6 +115,7 @@ network manager didnt start had to do it again
 .. code-block:: bash
 
   sudo pacman -S vim git emacs python
+  sudo pacman -S openssh
   git config --global user.name "Risto Pejasinovic"
   git config --global user.email "risto.pejasinovic@gmail.com"
 
@@ -134,7 +137,7 @@ network manager didnt start had to do it again
   sudo pacman -S firefox thunderbird htop qalculate-gtk
   sudo pacman -S xfce4-screenshooter
   sudo pacman -S lxrandr arandr
-  sudo pacman -S thunar gvfs thunar-volman tumpler engrampa
+  sudo pacman -S thunar gvfs thunar-volman tumbler engrampa file-roller thunar-archive-plugin
   sudo pacman -S viewnior feh vlc
   sudo pacman -S transmission-gtk
   sudo pacman -S evince
@@ -142,6 +145,7 @@ network manager didnt start had to do it again
   yay -S wps-office
   yay -S gitflow-git
   sudo pacman -S dunst libnotify
+  sudo pacman -S rsync
 
 **Clone git repo for config and scripts, and install**
 
@@ -244,6 +248,15 @@ network manager didnt start had to do it again
   yay -S ncurses5-compat-libs
   sudo pacman -S libpng12
   sudo pacman -S lib32-libpng12
+
+**Linux Kernel for arm build deps**
+
+.. code-block:: bash
+
+   sudo pacman -S uboot-tools
+   sudo pacman -S bc
+   yay -S arm-linux-gnueabi-gcc
+
 
 **Text formatting**
 

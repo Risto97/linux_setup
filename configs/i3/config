@@ -249,7 +249,7 @@ for_window [class="Matplotlib"] floating enable
 for_window [class="Opencv"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Parole"] floating enable
-for_window [class="Viewnior"] floating enable, resize grow left 200, resize grow right 200, resize grow down 150, resize grow up 200
+for_window [class="Viewnior"] floating enable, resize grow left 200, resize grow right 200, resize grow down 100
 
 # exec python /home/risto/scripts/wallpaper/wallpaper.py
 exec --no-startup-id feh --bg-scale $HOME/linux_setup/scripts/wallpaper/arch3.png
