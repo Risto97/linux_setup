@@ -115,6 +115,7 @@ create .xinitrc if i3 doesnt start
 .. code-block:: bash
 
   sudo pacman -S vim git emacs python
+  sudo pacman -S bash-completion
   sudo pacman -S openssh
   git config --global user.name "Risto Pejasinovic"
   git config --global user.email "risto.pejasinovic@gmail.com"
@@ -137,7 +138,7 @@ create .xinitrc if i3 doesnt start
   sudo pacman -S firefox thunderbird htop qalculate-gtk
   sudo pacman -S xfce4-screenshooter
   sudo pacman -S lxrandr arandr
-  sudo pacman -S thunar gvfs thunar-volman tumbler engrampa file-roller thunar-archive-plugin
+  sudo pacman -S thunar gvfs thunar-volman tumbler engrampa unrar file-roller thunar-archive-plugin
   sudo pacman -S viewnior feh vlc
   sudo pacman -S transmission-gtk
   sudo pacman -S evince
@@ -240,6 +241,7 @@ create .xinitrc if i3 doesnt start
 .. code-block:: bash
 
    pip install yapf
+   pip install autoflake
 
 **Vivado dependencies**
 
