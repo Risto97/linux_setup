@@ -255,9 +255,11 @@ for_window [class="Viewnior"] floating enable, resize grow left 200, resize grow
 exec --no-startup-id feh --bg-scale $HOME/linux_setup/scripts/wallpaper/arch3.png
 exec --no-startup-id compton -f
 exec --no-startup-id dunst
-exec --no-startup-id emacs --daemon=fast_editor
+# exec --no-startup-id emacs --daemon=fast_editor
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id thunderbird
 exec --no-startup-id i3-msg 'workspace Emacs; exec emacs; workspace 1. '
 exec --no-startup-id i3-msg 'workspace ; exec firefox; workspace 1. '
 exec --no-startup-id i3-msg 'workspace ; exec xfce4-terminal; workspace 1. '
+
+exec --no-startup-id xmodmap -e "keycode 94 = backslash"
