@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+font pango:monospace 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -144,11 +144,11 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 ""
 
-workspace $workspace1 output DP-1
-workspace $workspace2 output HDMI-1
-workspace $workspace3 output DP-1
-workspace $workspace4 output DP-1
-workspace $workspace5 output DP-1
+workspace $workspace1 output DP-0
+workspace $workspace2 output HDMI-0
+workspace $workspace3 output DP-0
+workspace $workspace4 output DP-0
+workspace $workspace5 output DP-0
 
 
 # switch to workspace
@@ -176,6 +176,7 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="Thunderbird"] $workspace10
+assign [class="electron-mail"] $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,6 +232,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        tray_output DP-0
         colors {
 		            background $bg-color
 	            	separator #757575
@@ -244,6 +246,7 @@ bar {
 for_window [class="Qalculate"] floating enable
 for_window [class="Catfish"] floating enable
 for_window [title="TaskManager"] floating enable, resize grow left 200, resize grow right 200, resize grow down 150, resize grow up 150
+for_window [title="weather_forecast"] floating enable, resize shrink right 160, resize grow up 100, resize grow down 220
 for_window [class="Yad"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [class="Opencv"] floating enable
@@ -258,7 +261,8 @@ exec --no-startup-id dunst
 # exec --no-startup-id emacs --daemon=fast_editor
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id thunderbird
-exec --no-startup-id i3-msg 'workspace Emacs; exec emacs; workspace 1. '
+exec --no-startup-id electron-mail
+exec --no-startup-id i3-msg 'workspace Emacs; exec /bin/bash -c "emacs"; workspace 1. '
 exec --no-startup-id i3-msg 'workspace ; exec firefox; workspace 1. '
 exec --no-startup-id i3-msg 'workspace ; exec xfce4-terminal; workspace 1. '
 

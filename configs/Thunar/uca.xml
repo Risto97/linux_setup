@@ -4,7 +4,7 @@
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<unique-id>1548775678709087-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<command>exo-open --working-directory $(pwd)  --launch TerminalEmulator</command>
 	<description>Example for a custom action</description>
 	<patterns>*</patterns>
 	<startup-notify/>
@@ -19,5 +19,19 @@
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
+</action>
+<action>
+	<icon></icon>
+	<name>asd</name>
+	<unique-id>1550363033026882-1</unique-id>
+	<command>echo $(pwd)  &gt;&gt;  /tools/log.txt</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 </actions>

@@ -193,6 +193,7 @@ create .xinitrc if i3 doesnt start
 
   sudo pacman -S adobe-source-code-pro-fonts
   sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
+  yay -S ttf-inconsolata
 
   yay -S papirus-maia-icon-theme-git
   sudo pacman -S lxappearance
@@ -242,6 +243,8 @@ create .xinitrc if i3 doesnt start
 
    pip install yapf
    pip install autoflake
+   sudo pacman -S clang
+   yay -S cquery
 
 **Vivado dependencies**
 

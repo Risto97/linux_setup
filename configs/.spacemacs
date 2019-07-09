@@ -33,7 +33,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(php
+   '(csv
+     php
      markdown
      ansible
      javascript
@@ -51,7 +52,9 @@ This function should only modify configuration layer settings."
      emacs-lisp
      latex
      git
-     c-c++
+     (c-c++ :variables
+            c-c++-backend 'lsp-cquery ;; or lsp-ccls
+            c-c++-lsp-sem-highlight-rainbow t)
      ;; markdown
      neotree
      restructuredtext
@@ -470,6 +473,11 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; (defun dotspacemacs/user-config ()
+  ;;   ;; ....
+  ;;   (evil-leader/set-key "/" 'spacemacs/helm-project-do-ag))
+
+
   (global-set-key (kbd "C-g") 'evil-escape)
 
   (define-key evil-insert-state-map (kbd "M-f") 'delete-char) ;; was 'forward-word
@@ -638,7 +646,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (phpunit phpcbf php-extras php-auto-yasnippets helm-gtags ggtags drupal-mode counsel-gtags company-php ac-php-core xcscope php-mode company-auctex auctex-latexmk auctex ztree yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon string-inflection spaceline-all-the-icons smeargle shell-pop restart-emacs realgud rainbow-delimiters pyvenv pytest pyenv-mode py-isort prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc jinja2-mode indent-guide importmagic hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-rtags flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline disaster diminish define-word cython-mode counsel-projectile company-tern company-statistics company-rtags company-quickhelp company-c-headers company-ansible company-anaconda column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-complete-rst auto-compile ansible-doc ansible aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (csv-mode ztree yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode visual-fill-column winum web-beautify volatile-highlights vi-tilde-fringe uuidgen toc-org symon string-inflection spaceline-all-the-icons spaceline powerline smeargle shell-pop restart-emacs realgud test-simple loc-changes load-relative rainbow-delimiters pyvenv pytest pyenv-mode py-isort prettier-js popwin pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox spinner overseer org-bullets open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc markdown-mode magit-svn magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode link-hint json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc jinja2-mode indent-guide importmagic epc ctable concurrent deferred hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-gitignore request helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-rtags flycheck-pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-numbers evil-nerd-commenter evil-matchit evil-magit magit-popup magit transient git-commit with-editor lv evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens smartparens paredit evil-args evil-anzu anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump drupal-mode doom-modeline eldoc-eval shrink-path all-the-icons memoize disaster define-word cython-mode counsel-projectile projectile counsel swiper ivy pkg-info epl company-tern dash-functional tern company-statistics company-rtags rtags company-quickhelp pos-tip company-php ac-php-core xcscope php-mode company-c-headers company-auctex company-ansible company-anaconda company column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode auto-yasnippet yasnippet auto-highlight-symbol auto-complete-rst auto-compile packed auctex-latexmk auctex ansible-doc ansible anaconda-mode pythonic f dash s aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core ac-ispell auto-complete popup which-key use-package pcre2el org-plus-contrib hydra font-lock+ evil goto-chg undo-tree dotenv-mode diminish bind-map bind-key async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
