@@ -47,6 +47,7 @@ bindsym $mod+d exec rofi -modi drun -show run -show-icons
 bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+Shift+w exec menu-surfraw
 bindsym $mod+Shift+s exec rofi_search_menu
+bindsym $mod+o exec rofi -show file-browser
 
 # Screenshot
 bindsym $mod+Print exec xfce4-screenshooter
