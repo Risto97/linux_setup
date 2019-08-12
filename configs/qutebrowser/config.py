@@ -1,3 +1,8 @@
+import os
+
+def bind_chained(key, *commands):
+    config.bind(key, ' ;; '.join(commands))
+
 c.tabs.background = True
 c.tabs.position = 'top'
 c.tabs.show = 'always'
@@ -68,6 +73,7 @@ config.bind('<Space>sc', 'open -t -- {clipboard}')
 config.bind('<Space>sC', 'open -- {clipboard}')
 config.bind('<Space>fp', 'open -t -- {clipboard}')
 config.bind('<Space>fP', 'open -- {clipboard}')
+config.bind('<Space>st', 'open -t https://translate.google.com/#auto/sr/{primary}')
 
 config.bind('<Space>ff', 'set-cmd-text -s :open -t')
 config.bind('<Space>fF', 'set-cmd-text -s :open')
@@ -83,6 +89,7 @@ config.bind("<Space>feR", 'config-source')
 
 config.bind("<Space>oy", 'open -t www.youtube.com')
 config.bind("<Space>ogg", 'open -t www.google.com')
+config.bind("<Space>ogt", 'open -t https://translate.google.com/#auto/sr')
 config.bind("<Space>ofb", 'open -t www.facebook.com')
 config.bind("<Space>ons", 'open -t www.nsbuild.rs')
 config.bind("<Space>om", 'open -t www.gmail.com')
@@ -91,6 +98,11 @@ config.bind("<Space>or", 'open -t www.reddit.com')
 config.bind("<Space>ogh", 'open -t www.github.com')
 config.bind("<Space>oel", 'open -t www.elektronika.ftn.uns.ac.rs/')
 config.bind("<Space>oftn", 'open -t www.ftn.uns.ac.rs/')
+config.bind("<Space>oso", 'open -t www.sofascore.com/')
+config.bind("<Space>otw", 'open -t www.twitter.com/')
+config.bind("<Space>oha", 'open -t www.hackaday.com/')
+config.bind("<Space>oli", 'open -t www.linkedin.com/')
+config.bind("<Space>owe", 'open -t https://www.weather2umbrella.com/vremenska-prognoza-novi-sad-serbia-sr/meteogram')
 
 config.bind("<Space>qr", 'restart')
 config.bind("<Space>qq", 'quit')
@@ -101,9 +113,41 @@ c.scrolling.bar = "always"
 c.scrolling.smooth = False
 
 c.session.lazy_restore = True
-c.tabs.select_on_remove = "next"
+c.tabs.select_on_remove = "last-used"
 
-c.editor.command = ['xfce4-terminal', '-e', 'vim', '{file}']
+c.editor.command = ['termite', '-e', 'emacsclient -c {}']
 
 config.bind("<Space>gs", 'spawn --userscript ~/.config/qutebrowser/userscripts/git_clone {url} default')
 config.bind("<Space>gS", 'spawn --userscript ~/.config/qutebrowser/userscripts/git_clone {url}')
+
+config.bind("<Ctrl+k>", 'completion-item-focus --history prev', mode='command')
+config.bind("<Ctrl+j>", 'completion-item-focus --history next', mode='command')
+
+
+bind_chained('<Ctrl+c>', 'enter-mode caret', 'yank selection')
+bind_chained('yy', 'enter-mode caret', 'yank selection')
+
+bind_chained("*", 'set-cmd-text /{primary}', "command-accept")
+
+config.bind("<Space>iy", "hint images yank-primary")
+config.bind("<Space>io", "spawn feh --geometry 1024x768 {primary}")
+
+
+def get_styles():
+    style_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "solarized-everything-css/css")
+    styles = os.listdir(style_dir)
+    for i, style in enumerate(styles):
+        style = os.path.join(style_dir, style, f"{style}-all-sites.css")
+        styles[i] = style
+
+    return styles
+
+
+for i, style in enumerate(get_styles()):
+    config.bind(f"<Space>t{i+1}", f"set content.user_stylesheets {style} ;; reload")
+
+config.bind("<Space>tt", f'config-cycle content.user_stylesheets {" ".join(get_styles())} "" ;; reload')
+config.bind("<Space>td", f'set content.user_stylesheets "" ;; reload')
+
+home_dir = os.getenv("HOME")
+config.bind("<Space>do", f"spawn --detach thunar {home_dir}/Downloads")

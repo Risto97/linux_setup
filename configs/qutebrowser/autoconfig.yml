@@ -3,5 +3,5 @@
 
 config_version: 2
 settings:
-  content.notifications:
-    https://www.reddit.com: true
+  content.user_stylesheets:
+    global: null

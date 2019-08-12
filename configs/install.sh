@@ -45,3 +45,6 @@ ln -s $(pwd)/qutebrowser/ ~/.config/
 
 rm -rf ~/.config/mpv
 ln -s $(pwd)/mpv/ ~/.config/
+
+rm -rf ~/.config/feh
+ln -s $(pwd)/feh/ ~/.config/

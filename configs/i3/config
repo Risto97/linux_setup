@@ -245,7 +245,7 @@ bar {
 	}
 }
 
-# for_window [class="Qalculate"] floating enable
+for_window [class="Qalculate"] floating enable
 for_window [class="Catfish"] floating enable
 for_window [title="TaskManager"] floating enable, resize grow left 200, resize grow right 200, resize grow down 150, resize grow up 150
 for_window [title="weather_forecast"] floating enable, resize shrink right 140, resize grow up 100, resize grow down 220
@@ -258,12 +258,13 @@ for_window [class="Viewnior"] floating enable, resize grow left 200, resize grow
 for_window [class="program"] floating enable
 for_window [class="ad9850_gui"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="feh"] floating enable
 
 # exec python /home/risto/scripts/wallpaper/wallpaper.py
 exec --no-startup-id feh --bg-scale $HOME/linux_setup/scripts/wallpaper/arch3.png
 exec --no-startup-id compton -f
 exec --no-startup-id dunst
-# exec --no-startup-id emacs --daemon=fast_editor
+exec --no-startup-id emacs --daemon=fast_editor
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id thunderbird
 exec --no-startup-id electron-mail
