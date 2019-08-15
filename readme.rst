@@ -147,6 +147,7 @@ create .xinitrc if i3 doesnt start
   yay -S gitflow-git
   sudo pacman -S dunst libnotify
   sudo pacman -S rsync
+  yay -S rofi-calc
 
 **Clone git repo for config and scripts, and install**
 

@@ -87,22 +87,26 @@ config.bind("<Space>fw", 'set-cmd-text :open -w {url:pretty}')
 
 config.bind("<Space>feR", 'config-source')
 
-config.bind("<Space>oy", 'open -t www.youtube.com')
-config.bind("<Space>ogg", 'open -t www.google.com')
-config.bind("<Space>ogt", 'open -t https://translate.google.com/#auto/sr')
-config.bind("<Space>ofb", 'open -t www.facebook.com')
-config.bind("<Space>ons", 'open -t www.nsbuild.rs')
-config.bind("<Space>om", 'open -t www.gmail.com')
-config.bind("<Space>ob", 'open -t www.b92.net')
-config.bind("<Space>or", 'open -t www.reddit.com')
-config.bind("<Space>ogh", 'open -t www.github.com')
-config.bind("<Space>oel", 'open -t www.elektronika.ftn.uns.ac.rs/')
-config.bind("<Space>oftn", 'open -t www.ftn.uns.ac.rs/')
-config.bind("<Space>oso", 'open -t www.sofascore.com/')
-config.bind("<Space>otw", 'open -t www.twitter.com/')
-config.bind("<Space>oha", 'open -t www.hackaday.com/')
-config.bind("<Space>oli", 'open -t www.linkedin.com/')
-config.bind("<Space>owe", 'open -t https://www.weather2umbrella.com/vremenska-prognoza-novi-sad-serbia-sr/meteogram')
+def bind_open_site(keys, link):
+    config.bind(f"<Space>o{keys}", f'open -t {link}')
+    config.bind(f"<Space>O{keys}", f'open {link}')
+
+bind_open_site("y", 'www.youtube.com')
+bind_open_site("gg", 'www.google.com')
+bind_open_site("gt", 'https://translate.google.com/#auto/sr')
+bind_open_site("fb", 'www.facebook.com')
+bind_open_site("ns", 'www.nsbuild.rs')
+bind_open_site("m", 'www.gmail.com')
+bind_open_site("b", 'www.b92.net')
+bind_open_site("r", 'www.reddit.com')
+bind_open_site("gh", 'www.github.com')
+bind_open_site("el", 'www.elektronika.ftn.uns.ac.rs/')
+bind_open_site("ftn", 'www.ftn.uns.ac.rs/')
+bind_open_site("so", 'www.sofascore.com/')
+bind_open_site("tw", 'www.twitter.com/')
+bind_open_site("ha", 'www.hackaday.com/')
+bind_open_site("li", 'www.linkedin.com/')
+bind_open_site("we", 'https://www.weather2umbrella.com/vremenska-prognoza-novi-sad-serbia-sr/meteogram')
 
 config.bind("<Space>qr", 'restart')
 config.bind("<Space>qq", 'quit')
@@ -115,7 +119,7 @@ c.scrolling.smooth = False
 c.session.lazy_restore = True
 c.tabs.select_on_remove = "last-used"
 
-c.editor.command = ['termite', '-e', 'emacsclient -c {}']
+c.editor.command = ['termite', '-e', 'emacsclient --socket-name=fast_editor -c  {}']
 
 config.bind("<Space>gs", 'spawn --userscript ~/.config/qutebrowser/userscripts/git_clone {url} default')
 config.bind("<Space>gS", 'spawn --userscript ~/.config/qutebrowser/userscripts/git_clone {url}')

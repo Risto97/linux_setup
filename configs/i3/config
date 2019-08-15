@@ -48,7 +48,8 @@ bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+Shift+w exec menu-surfraw
 bindsym $mod+Shift+s exec rofi_search_menu
 bindsym $mod+o exec rofi -show file-browser
-bindsym $mod+c exec cheatsheet_rofi.py
+bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
+# bindsym $mod+c exec cheatsheet_rofi.py
 
 # Screenshot
 bindsym $mod+Print exec xfce4-screenshooter
@@ -264,7 +265,7 @@ for_window [class="feh"] floating enable
 exec --no-startup-id feh --bg-scale $HOME/linux_setup/scripts/wallpaper/arch3.png
 exec --no-startup-id compton -f
 exec --no-startup-id dunst
-exec --no-startup-id emacs --daemon=fast_editor
+exec --no-startup-id bash -c "sleep 10; emacs --daemon=fast_editor"
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id thunderbird
 exec --no-startup-id electron-mail
