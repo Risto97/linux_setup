@@ -3,5 +3,5 @@
 
 config_version: 2
 settings:
-  fonts.keyhint:
-    global: 10pt monospace
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: true

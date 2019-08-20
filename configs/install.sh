@@ -48,3 +48,6 @@ ln -s $(pwd)/mpv/ ~/.config/
 
 rm -rf ~/.config/feh
 ln -s $(pwd)/feh/ ~/.config/
+
+rm -rf ~/.Xdefaults
+ln -s $(pwd)/.Xdefaults ~/

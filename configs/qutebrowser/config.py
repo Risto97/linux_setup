@@ -9,6 +9,8 @@ c.tabs.show = 'always'
 c.tabs.padding = {"bottom": 5, "left": 5, "right": 5, "top": 5}
 c.tabs.favicons.scale = 1.3
 
+c.confirm_quit = ["always"]
+
 c.colors.tabs.selected.odd.fg = "red"
 c.colors.tabs.selected.even.fg = "red"
 c.colors.tabs.selected.odd.bg = "#7ea5d9"
@@ -26,6 +28,7 @@ c.input.spatial_navigation = False
 c.url.start_pages = 'www.google.com'
 c.url.searchengines = {
     "DEFAULT": "https://www.google.com/search?q={}",
+    "g": "https://www.google.com/search?q={}",
     "sp": "https://www.startpage.com/do/dsearch?query={}",
     "r": "https://reddit.com/r/{}",
     "gt": "https://translate.google.com/#auto/en/{}",
@@ -46,6 +49,9 @@ config.bind('<ctrl+shift+left>', 'tab-prev')
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 
+config.bind('<ctrl+j>', 'scroll-page 0 0.25')
+config.bind('<ctrl+k>', 'scroll-page 0 -0.25')
+
 config.bind("<Space>wd", 'tab-close')
 config.bind("<Space>w<left>", 'tab-prev')
 config.bind("<Space>w<right>", 'tab-next')
@@ -65,8 +71,8 @@ config.unbind('D')
 config.bind('<Space>bp', 'back')
 config.bind('<Space>bn', 'forward')
 
-config.bind('<Space>sp', 'open -t -- {primary}')
-config.bind('<Space>sS', 'open -t -- {primary}')
+config.bind('<Space>sp', 'open -t g {primary}')
+config.bind('<Space>sS', 'open -t g {primary}')
 config.bind('<Space>ss', 'open -- {primary}')
 config.bind('<Space>sP', 'open -- {primary}')
 config.bind('<Space>sc', 'open -t -- {clipboard}')
@@ -119,7 +125,7 @@ c.scrolling.smooth = False
 c.session.lazy_restore = True
 c.tabs.select_on_remove = "last-used"
 
-c.editor.command = ['termite', '-e', 'emacsclient --socket-name=fast_editor -c  {}']
+c.editor.command = ['urxvt', '-e', 'emacsclient', '--socket-name=fast_editor', '-c',  '{}']
 
 config.bind("<Space>gs", 'spawn --userscript ~/.config/qutebrowser/userscripts/git_clone {url} default')
 config.bind("<Space>gS", 'spawn --userscript ~/.config/qutebrowser/userscripts/git_clone {url}')

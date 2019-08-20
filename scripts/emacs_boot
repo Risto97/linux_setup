@@ -1,0 +1,3 @@
+#!/bin/bash
+
+emacs --daemon=fast_editor && exec emacsclient --socket-name=fast_editor -c
