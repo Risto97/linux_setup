@@ -37,7 +37,8 @@ bindsym button3 floating toggle
 bindsym $mod+Return exec urxvt
 
 # start thunar
-bindsym $mod+t exec thunar
+bindsym $mod+Shift+t exec thunar
+bindsym $mod+t exec urxvt -e ranger
 
 # kill focused window
 bindsym --release $mod+Shift+q kill
@@ -61,10 +62,10 @@ bindsym Print exec xfce4-screenshooter -f
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 focus_follows_mouse no
 
@@ -75,10 +76,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -87,7 +88,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -248,7 +249,7 @@ bar {
 for_window [class="Qalculate"] floating enable
 for_window [class="Catfish"] floating enable
 for_window [title="TaskManager"] floating enable, resize grow left 200, resize grow right 200, resize grow down 150, resize grow up 150
-for_window [title="weather_forecast"] floating enable, resize shrink right 140, resize grow up 100, resize grow down 220
+for_window [title="weather_forecast"] floating enable, resize shrink right 20, resize grow up 170, resize grow down 250
 for_window [class="Yad"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [class="Opencv"] floating enable

@@ -40,6 +40,9 @@ ln -s $(pwd)/Thunar ~/.config/
 rm -rf ~/.config/surfraw
 ln -s $(pwd)/surfraw ~/.config/
 
+rm -rf ~/.config/ranger
+ln -s $(pwd)/ranger ~/.config/
+
 rm -rf ~/.config/qutebrowser
 ln -s $(pwd)/qutebrowser/ ~/.config/
 

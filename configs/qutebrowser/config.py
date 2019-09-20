@@ -46,8 +46,9 @@ config.bind('M', 'hint links spawn --detach mpv --geometry=75% {hint-url}')
 
 config.bind('<ctrl+shift+right>', 'tab-next')
 config.bind('<ctrl+shift+left>', 'tab-prev')
-config.bind('J', 'tab-prev')
-config.bind('K', 'tab-next')
+config.bind('H', 'tab-prev')
+config.bind('L', 'tab-next')
+config.bind('L', 'tab-next')
 
 config.bind('<ctrl+j>', 'scroll-page 0 0.25')
 config.bind('<ctrl+k>', 'scroll-page 0 -0.25')
@@ -80,6 +81,9 @@ config.bind('<Space>sC', 'open -- {clipboard}')
 config.bind('<Space>fp', 'open -t -- {clipboard}')
 config.bind('<Space>fP', 'open -- {clipboard}')
 config.bind('<Space>st', 'open -t https://translate.google.com/#auto/sr/{primary}')
+
+config.bind('<Space>li', 'spawn --userscript qute-pass ')
+config.bind('<Space>lI', 'spawn --userscript qute-pass --password-only')
 
 config.bind('<Space>ff', 'set-cmd-text -s :open -t')
 config.bind('<Space>fF', 'set-cmd-text -s :open')
@@ -160,4 +164,6 @@ config.bind("<Space>tt", f'config-cycle content.user_stylesheets {" ".join(get_s
 config.bind("<Space>td", f'set content.user_stylesheets "" ;; reload')
 
 home_dir = os.getenv("HOME")
-config.bind("<Space>do", f"spawn --detach thunar {home_dir}/Downloads")
+
+config.bind("<Space>dot", f"spawn --detach thunar {home_dir}/Downloads")
+config.bind("<Space>dor", f"spawn --userscript ~/.config/qutebrowser/userscripts/stock/open_download")
