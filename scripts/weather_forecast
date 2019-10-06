@@ -1,4 +1,4 @@
 #!/bin/sh
 
-curl  http://wttr.in/?n
+curl  http://v2.wttr.in/?n
 read  -n 1 -p "Press any key to exit:" mainmenuinput

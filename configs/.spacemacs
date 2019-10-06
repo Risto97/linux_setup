@@ -526,6 +526,10 @@ before packages are loaded."
   " =============== Latex configuration ======================="
   ;; (setq latex-run-command "xelatex")
 
+  (with-eval-after-load 'latex
+    (add-to-list 'safe-local-variable-values
+                 '(TeX-command-extra-options . "-shell-escape")))
+
   " =============== HELM configuration ======================="
   " set left and right to navigate in helm-find-files"
   (require 'helm)
