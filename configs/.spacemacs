@@ -55,6 +55,7 @@ This function should only modify configuration layer settings."
      latex
      helm
      command-log
+     (java :variables java-backend 'lsp)
 
      (python :variables
              python-test-runner 'nose)
@@ -64,8 +65,9 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t)
      (c-c++ :variables
-            c-c++-backend 'lsp-cquery ;; or lsp-ccls
+            c-c++-backend 'lsp-clangd
             c-c++-lsp-sem-highlight-rainbow t)
+
      markdown
      multiple-cursors
      ;; org
@@ -73,7 +75,7 @@ This function should only modify configuration layer settings."
             shell-default-height 30
             shell-default-position 'bottom)
      syntax-checking
-     ;; spell-checking
+     spell-checking
      treemacs
      ;; themes-megapack
      ;; version-control
@@ -540,6 +542,37 @@ before packages are loaded."
   " Set Evil Escape as ctrl+g"
   (global-set-key (kbd "C-g") 'evil-escape)
 
+  " =============== JAVA ======================================"
+  ;; (require 'cc-mode)
+
+  (require 'gradle-mode)
+  (spacemacs/set-leader-keys-for-major-mode 'gradle-mode "cc" 'gradle-execute)
+  ;; (condition-case nil
+  ;;     (require 'use-package)
+  ;;   (file-error
+  ;;    (require 'package)
+  ;;    (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  ;;    (package-initialize)
+  ;;    (package-refresh-contents)
+  ;;    (package-install 'use-package)
+  ;;    (require 'use-package)))
+
+  ;; (use-package projectile :ensure t)
+  ;; (use-package yasnippet :ensure t)
+  ;; (use-package lsp-mode :ensure t)
+  ;; (use-package hydra :ensure t)
+  ;; (use-package company-lsp :ensure t)
+  ;; (use-package lsp-ui :ensure t)
+  ;; (use-package lsp-java :ensure t :after lsp
+  ;;   :config (add-hook 'java-mode-hook 'lsp))
+
+  ;; (use-package dap-mode
+  ;;   :ensure t :after lsp-mode
+  ;;   :config
+  ;;   (dap-mode t)
+  ;;   (dap-ui-mode t))
+
+  ;; (use-package dap-java :after (lsp-java))
 
   " =============== Python debugger config ===================="
   (setq python-shell-interpreter-args "-i")

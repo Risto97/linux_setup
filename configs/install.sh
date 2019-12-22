@@ -54,3 +54,6 @@ ln -s $(pwd)/feh/ ~/.config/
 
 rm -rf ~/.Xdefaults
 ln -s $(pwd)/.Xdefaults ~/
+
+rm -rf ~/.fzf.bash
+ln -s $(pwd)/.fzf.bash ~/
