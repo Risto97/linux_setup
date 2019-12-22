@@ -513,9 +513,9 @@ before packages are loaded."
     (kbd "C-l") 'right-word)
 
   (define-key evil-normal-state-map
-    (kbd "C-k") 'forward-paragraph)
+    (kbd "C-j") 'forward-paragraph)
   (define-key evil-normal-state-map
-    (kbd "C-j") 'backward-paragraph)
+    (kbd "C-k") 'backward-paragraph)
 
   (define-key evil-insert-state-map
     (kbd "C-h") 'left-char)
