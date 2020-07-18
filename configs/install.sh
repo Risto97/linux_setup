@@ -57,3 +57,8 @@ ln -s $(pwd)/.Xdefaults ~/
 
 rm -rf ~/.fzf.bash
 ln -s $(pwd)/.fzf.bash ~/
+
+rm -rf ~/.vim
+rm ~/.vimrc
+ln -s $(pwd)/.vim ~/
+ln -s $(pwd)/.vimrc ~/
