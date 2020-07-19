@@ -60,7 +60,7 @@ let g:Lf_ShortcutB = ""
 nnoremap <Leader>feR :RefreshConfig<CR> :noh<CR>
 nnoremap <Leader>fed :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>fs :w<CR>
-nnoremap <Leader>ff :Leaderf filer<CR>
+nnoremap <Leader>ff :Leaderf filer --auto-cd<CR>
 nnoremap <Leader>fr :LeaderfMru<CR>
 nnoremap <Leader>fR :Rename <C-R>=expand("%:t")<CR>
 nnoremap <Leader>fD :Unlink
