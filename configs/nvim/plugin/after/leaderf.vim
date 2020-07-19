@@ -1,10 +1,13 @@
 let g:Lf_ShowDevIcons = 1
 let g:Lf_FilerShowHiddenFiles = 1
+let g:Lf_FilerShowPromptPath = 1
+let g:Lf_ShowRelativePath = 0
 
 let g:Lf_FilerUseDefaultInsertMap = 0
 let g:Lf_FilerInsertMap = {
     \   '<Left>':        'open_parent_or_backspace',
     \   '<Right>':        'open_current',
+    \   '<Tab>':        'open_current',
     \   '<C-y>':        'toggle_hidden_files',
     \   '<C-g>':        'goto_root_marker_dir',
     \   '<Esc>':        'quit',
@@ -28,7 +31,7 @@ let g:Lf_FilerInsertMap = {
     \   '<C-p>':        'prev_history',
     \   '<C-n>':        'next_history',
     \   '<C-q>':        'preview',
-    \   '<Tab>':        'switch_normal_mode',
+    \   '<C-x>':        'switch_normal_mode',
     \   '<C-Up>':       'page_up_in_preview',
     \   '<C-Down>':     'page_down_in_preview',
     \   '<ScroollWhellUp>': 'up3',

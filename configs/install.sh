@@ -58,7 +58,11 @@ ln -s $(pwd)/.Xdefaults ~/
 rm -rf ~/.fzf.bash
 ln -s $(pwd)/.fzf.bash ~/
 
-rm -rf ~/.vim
-rm ~/.vimrc
-ln -s $(pwd)/.vim ~/
-ln -s $(pwd)/.vimrc ~/
+mkdir -p ~/bin
+wget --directory-prefix=$HOME/bin https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
+chmod +x ~/bin/nvim.appimage
+mv ~/bin/nvim.appimage ~/bin/nvim
+rm -rf ~/.config/nvim
+ln -s $(pwd)/nvim ~/.config/nvim
+./coc.nvim.sh
+
