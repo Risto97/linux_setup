@@ -59,3 +59,10 @@ rm -rf ~/.fzf.bash
 ln -s $(pwd)/.fzf.bash ~/
 
 ./nvim_install.sh
+
+wget https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep-12.1.1-x86_64-unknown-linux-musl.tar.gz
+tar -xzvf ripgrep-12.1.1-x86_64-unknown-linux-musl.tar.gz
+mv ripgrep-12.1.1-x86_64-unknown-linux-musl/rg ~/bin
+rm -rf ripgrep-12.1.1-x86_64-unknown-linux-musl
+
+
