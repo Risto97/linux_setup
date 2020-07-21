@@ -60,9 +60,22 @@ ln -s $(pwd)/.fzf.bash ~/
 
 ./nvim_install.sh
 
-wget https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep-12.1.1-x86_64-unknown-linux-musl.tar.gz
-tar -xzvf ripgrep-12.1.1-x86_64-unknown-linux-musl.tar.gz
-mv ripgrep-12.1.1-x86_64-unknown-linux-musl/rg ~/bin
-rm -rf ripgrep-12.1.1-x86_64-unknown-linux-musl
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
+rm ~/.config/.bash_customrc
+ln -s $(pwd)/.bash_customrc ~/.config/
+echo 'source ~/.config/.bash_customrc' > ~/.bashrc
+
+wget https://github.com/sharkdp/bat/releases/download/v0.15.4/bat-v0.15.4-x86_64-unknown-linux-musl.tar.gz
+tar -xzvf bat-v0.15.4-x86_64-unknown-linux-musl.tar.gz
+mv bat-v0.15.4-x86_64-unknown-linux-musl/bat ~/bin
+rm -rf bat-v*
+
+wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
+mkdir hack_tmp
+unzip Hack-v3.003-ttf.zip -d hack_tmp/
+mv hack_tmp/ttf/Hack* ~/.fonts
+fc-cache -fv
+rm -rf hack_tmp
 

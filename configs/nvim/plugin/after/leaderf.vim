@@ -1,4 +1,4 @@
-let g:Lf_ShowDevIcons = 1
+let g:Lf_ShowDevIcons = 0
 let g:Lf_FilerShowHiddenFiles = 1
 let g:Lf_FilerShowPromptPath = 1
 let g:Lf_ShowRelativePath = 0
@@ -39,3 +39,9 @@ let g:Lf_FilerInsertMap = {
     \}
 
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+let g:Lf_PreviewInPopup = 1
+let g:Lf_PopupColorscheme = 'default'
+let g:Lf_PopupWidth = &columns * 3 / 4
+let g:Lf_PopupHeight = 0.3
+let g:Lf_AutoResize = 0
+let g:Lf_WindowHeight = 0.30

@@ -23,6 +23,10 @@ Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-quickrun'
 Plug 'moll/vim-bbye'
+Plug 'airblade/vim-rooter'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
+Plug 'pelodelfuego/vim-swoop'
 
 " Initialize plugin system
 call plug#end()
@@ -75,20 +79,33 @@ nnoremap <Leader>dc :Clap<CR>
 
 " Quit Menu
 nnoremap <Leader>qq :qa<CR>
+nnoremap <Leader>qQ :qa!<CR>
+nnoremap <Leader>qr :SaveSession<CR> :qa<CR>
+nnoremap <Leader>qs :OpenSession<CR>
+let g:session_autosave = 0
+let g:session_autoload = 0
 
 " Search
 nnoremap <Leader>sc :noh<CR>
 " RipGrep word under cursor in directory
-noremap <Leader>sw :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+noremap <Leader>sp :<C-u><C-w>call RGProjectString(expand("<cword>"))<CR>
 " RipGrep Visual selection in directory
-xnoremap <Leader>sp :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR><CR>
+xnoremap <Leader>sp  :<C-u><C-w>call RGProjectString(VisualSelection())<CR>
+
+function! RGProjectString(query)
+  let initial_command = printf(":RGProject %s", a:query)
+  execute initial_command
+endfunction
+
 " search selected word literally only in current buffer
-noremap <Leader>ss :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", leaderf#Rg#visual())<CR><CR>
-" <Space>se from spacemacs
-" nnoremap <Leader>se  :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR> <bar> :%s/\<<C-r><C-w>\>/
-" nmap <Leader>se  <C-n>
-" vnoremap <Leader>se "hy:%s/<C-r>h/
+" noremap <Leader>ss :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", leaderf#Rg#visual())<CR><CR>
+nnoremap <Leader>ss :call SwoopPattern("<C-R>=expand("<cword>")<CR>")<CR>
+vmap <Leader>ss :call SwoopSelection()<CR>
 nnoremap <*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" Project
+noremap <Leader>pf :RGProjectFiles<CR>
+
 
 " Window Menu
 set splitbelow
@@ -105,7 +122,7 @@ nnoremap <Leader>w<Left> <C-W><C-H>
 " Buffers
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
-nnoremap <Leader>bb :LeaderfBuffer<CR>
+nnoremap <Leader>bb :Buffers<CR>
 
 " Git
 nnoremap <Leader>gs :Magit<CR>
@@ -137,4 +154,32 @@ hi Search ctermfg=White
 source ~/.config/nvim/plugin/after/vim-which-key.vim
 source ~/.config/nvim/coc.vim
 source ~/.config/nvim/plugin/after/vim-multiple-cursor.vim
+source ~/.config/nvim/plugin/after/leaderf.vim
+source ~/.config/nvim/helpers.vim
+source ~/.config/nvim/plugged/fzf.vim/autoload/fzf/vim.vim
+
+command! -bang ProjectFiles call fzf#vim#files('~/pulp', <bang>0)
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:40%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+
+function! RipgrepFzf(query, fullscreen, path)
+	let transformer  =  "| awk 'BEGIN{ FS=\":\"; OFS=FS } {n=split($1, a, \"/\"); $3=$3 \":\" a[n] \":\" $2 \":\" $3; print}'"
+	let cmd_fmt = "rg --column --line-number --no-heading --hidden -g \"!{.git,node_modules,vendor}/*\" --color=always --smart-case %s %s "
+	let rg_cmd = printf(cmd_fmt, shellescape(a:query), a:path)
+	let reload_command = printf(cmd_fmt..transformer, '{q}', a:path)
+	let spec={'options': ['--delimiter=:', '--with-nth=4..', '--query', a:query, '--bind', 'change:reload:'.reload_command] }
+        echo "RG in" a:path
+  	call fzf#vim#grep(rg_cmd..transformer, 1, fzf#vim#with_preview(spec) , a:fullscreen)
+endfunction
+
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0, '~')
+command! -nargs=* -bang RGProject call RipgrepFzf(<q-args>, <bang>0, FindRootDirectory())
+command! -bang RGProjectFiles call fzf#vim#files(FindRootDirectory(), <bang>0)
+
+" Mapping to exit Fzf with Esc
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
