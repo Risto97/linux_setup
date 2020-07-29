@@ -11,6 +11,9 @@ ln -s $(pwd)/i3/ ~/.config/
 rm ~/.spacemacs
 ln -s $(pwd)/.spacemacs ~/.spacemacs
 
+rm ~/.xinitrc
+ln -s $(pwd)/.xinitrc ~/.xinitrc
+
 rm -rf ~/.config/rofi
 ln -s $(pwd)/rofi/ ~/.config/
 
@@ -69,13 +72,14 @@ echo 'source ~/.config/.bash_customrc' > ~/.bashrc
 
 wget https://github.com/sharkdp/bat/releases/download/v0.15.4/bat-v0.15.4-x86_64-unknown-linux-musl.tar.gz
 tar -xzvf bat-v0.15.4-x86_64-unknown-linux-musl.tar.gz
-mv bat-v0.15.4-x86_64-unknown-linux-musl/bat ~/bin
+mv bat-v0.15.4-x86_64-unknown-linux-musl/bat ~/.local/bin
 rm -rf bat-v*
 
 wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
 mkdir hack_tmp
 unzip Hack-v3.003-ttf.zip -d hack_tmp/
 mv hack_tmp/ttf/Hack* ~/.fonts
+rm -rf Hack-v*
 fc-cache -fv
 rm -rf hack_tmp
 

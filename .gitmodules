@@ -1,3 +1,6 @@
 [submodule "configs/qutebrowser/solarized-everything-css"]
 	path = configs/qutebrowser/solarized-everything-css
 	url = https://github.com/alphapapa/solarized-everything-css.git
+[submodule "aui"]
+	path = aui
+	url = https://github.com/Risto97/aui.git
