@@ -1,0 +1,15 @@
+#! /bin/bash
+
+list="
+Gmail \t\t\t\t www.gmail.com\n
+Cern Mail \t\t\t mmm.cern.ch/owa\n
+Protonmail \t\t\t mail.protonmail.com/inbox"
+
+selection=$(echo -e $list | rofi -dmenu -i -auto-select)
+result=$(echo -e $selection | awk '{print $NF}')
+
+if ! [ -z "$result" ]
+then
+      $BROWSER $result
+fi
+

@@ -83,3 +83,8 @@ rm -rf Hack-v*
 fc-cache -fv
 rm -rf hack_tmp
 
+wget https://github.com/jesseduffield/lazygit/releases/download/v0.20.9/lazygit_0.20.9_Linux_x86_64.tar.gz
+mkdir lazygit
+tar -xzvf lazygit_0.20.9_Linux_x86_64.tar.gz --directory lazygit
+mv lazygit/lazygit ~/.local/bin
+rm -rf lazygit

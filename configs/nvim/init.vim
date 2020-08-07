@@ -13,7 +13,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'jreybert/vimagit'
 Plug 'dominikduda/vim_current_word'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tomtom/tcomment_vim'
@@ -27,6 +26,9 @@ Plug 'airblade/vim-rooter'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 Plug 'pelodelfuego/vim-swoop'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'puremourning/vimspector'
+Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 
 " Initialize plugin system
 call plug#end()
@@ -123,10 +125,20 @@ nnoremap <Leader>w<Left> <C-W><C-H>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bb :Buffers<CR>
+nnoremap <Leader>bY :%y<CR>
+nnoremap <Leader>bP ggdG"0P
 
 " Git
-nnoremap <Leader>gs :Magit<CR>
-nnoremap <Leader>glc :Clap commits<CR>
+" nnoremap <Leader>gs :Magit<CR>
+nnoremap <silent> <leader>gs :LazyGit<CR>
+" nnoremap <Leader>glc :Clap commits<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 0.75 " scaling factor for floating window
+
+" diff
+nnoremap <Leader>db :diffthis<CR>
+nnoremap <Leader>dw :windo diffthis<CR>
+nnoremap <Leader>dq :windo diffoff<CR>
 
 " Command Menu
 nnoremap <Leader><Leader> :
@@ -183,3 +195,23 @@ command! -bang RGProjectFiles call fzf#vim#files(FindRootDirectory(), <bang>0)
 " Mapping to exit Fzf with Esc
 tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
+filetype plugin on
+
+"" Vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+
+
+"" Create directory on save file
+
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END

@@ -1,6 +1,7 @@
 PS1='\[$(tput bold)\]\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;11m\]@\h:\[$(tput sgr0)\]\[\033[38;5;33m\][\[$(tput sgr0)\]\[\033[38;5;39m\]\w\[$(tput sgr0)\]\[\033[38;5;33m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]\\$ \[$(tput sgr0)\]'
 
 export PATH=~/.local/bin/:$PATH
+export PATH=~/.config/i3/scripts/:$PATH
 export PATH=$PATH:$HOME/.local/bin/node_modules/yarn/bin
 
 export NVM_DIR=~/.nvm
@@ -13,4 +14,14 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-alias ll='ls -alF'
+## Colorize the ls output ##
+alias ls='ls --color=auto'
+
+## Use a long listing format ##
+alias ll='ls -la'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+bind 'set bell-style none'
+
+export BROWSER=brave

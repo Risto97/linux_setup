@@ -47,10 +47,10 @@ bindsym --release $mod+q exec xkill
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -modi drun -show run -show-icons
 bindsym Mod1+Tab exec rofi -show window
-bindsym $mod+Shift+w exec menu-surfraw
-bindsym $mod+Shift+s exec rofi_search_menu
-bindsym $mod+o exec rofi -show file-browser
-bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
+bindsym $mod+c exec qalculate-gtk
+bindsym XF86Mail exec rofi_mail
+bindsym $mod+b exec rofi_bookmark
+bindsym $mod+m exec rofi_mail
 # bindsym $mod+c exec cheatsheet_rofi.py
 
 # Screenshot
@@ -128,25 +128,29 @@ bindsym $mod+Shift+Prior scratchpad show; floating disable; exec pkill -RTMIN+10
 
 
 # Pulse Audio controls
-bindsym $mod+KP_Add exec --no-startup-id python3 /home/risto/linux_setup/scripts/PulseAudioVolume/incrVolume.py; exec python3 /home/risto/linux_setup/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #increase sound volume
-bindsym $mod+KP_Subtract exec --no-startup-id python3 /home/risto/linux_setup/scripts/PulseAudioVolume/decrVolume.py; exec python3 /home/risto/linux_setup/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #decrease sound volume
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id python3 /home/risto/linux_setup/scripts/PulseAudioVolume/incrVolume.py; exec python3 /home/risto/linux_setup/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id python3 /home/risto/linux_setup/scripts/PulseAudioVolume/decrVolume.py; exec python3 /home/risto/linux_setup/scripts/PulseAudioVolume/volume_notify.py; exec pkill -RTMIN+10 i3blocks #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # load keyboard layouts
 exec setxkbmap -model pc104 -layout us,rs,rs -variant ,latin, -option grp:alt_shift_toggle
+
+bindsym XF86HomePage exec $(BROWSER)
+bindsym XF86Calculator exec qalculate-gtk
+bindsym XF86Explorer exec thunar
 
 # focus the child container
 #bindsym $mod+d focus child
 
 set $ws1  "1.Work "
 set $ws2  "2.Work "
-set $ws3  "3.Emacs"
+set $ws3  "3.Vim  "
 set $ws4  "4.WWW  "
 set $ws5  "5.Term "
 set $ws6  "6.     "
 set $ws7  "7.     "
 set $ws8  "8.     "
-set $ws9  "9.Email"
+set $ws9  "9.Chat "
 set $ws10 "0.     "
 
 workspace $ws1 output HDMI-0
@@ -263,6 +267,7 @@ for_window [class="mpv"] floating enable
 for_window [class="feh"] floating enable
 
 assign [class="Thunderbird"] $ws9
+assign [class="Mattermost"] $ws9
 assign [class="electron-mail"] $ws9
 
 exec --no-startup-id feh --bg-scale $HOME/linux_setup/scripts/wallpaper/arch3.png
@@ -270,9 +275,9 @@ exec --no-startup-id feh --bg-scale $HOME/linux_setup/scripts/wallpaper/arch3.pn
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id thunderbird
+exec --no-startup-id Mattermost
 exec --no-startup-id electron-mail
-exec --no-startup-id i3-msg 'workspace $ws3; exec bash -c emacs_boot'
-exec --no-startup-id i3-msg 'workspace $ws4; exec qutebrowser'
+exec --no-startup-id i3-msg 'workspace $ws4; exec brave'
 exec --no-startup-id i3-msg 'workspace $ws5; exec urxvt'
 
 exec --no-startup-id xmodmap -e "keycode 94 = backslash"

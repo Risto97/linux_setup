@@ -1,0 +1,23 @@
+#! /bin/bash
+
+list="
+Google \t\t\t\t\t\t www.google.com\n
+Gmail \t\t\t\t\t\t www.gmail.com\n
+Youtube \t\t\t\t\t www.youtube.com\n
+Twitter \t\t\t\t\t www.twitter.com\n
+B92 \t\t\t\t\t\t www.b92.net\n
+Facebook \t\t\t\t\t www.facebook.com\n
+Reddit \t\t\t\t\t www.reddit.com\n
+Cern Marketplace \t\t\t\t marketplace.web.cern.ch\n
+Linkedin \t\t\t\t\t www.linkedin.com\n
+Amazon \t\t\t\t\t www.amazon.fr\n
+GitHub \t\t\t\t\t www.github.com\n
+"
+
+selection=$(echo -e $list | rofi -dmenu -i)
+result=$(echo -e $selection | awk '{print $NF}')
+
+if ! [ -z "$result" ]
+then
+      $BROWSER $result
+fi
