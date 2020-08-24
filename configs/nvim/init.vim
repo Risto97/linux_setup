@@ -176,6 +176,7 @@ command! -bang -nargs=? -complete=dir Files
 
 
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:40%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let $FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden -g '!.git*'"
 
 function! RipgrepFzf(query, fullscreen, path)
 	let transformer  =  "| awk 'BEGIN{ FS=\":\"; OFS=FS } {n=split($1, a, \"/\"); $3=$3 \":\" a[n] \":\" $2 \":\" $3; print}'"
