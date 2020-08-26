@@ -19,9 +19,12 @@ alias ls='ls --color=auto'
 
 ## Use a long listing format ##
 alias ll='ls -la'
+alias rgf='rg --files | rg'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 bind 'set bell-style none'
 
 export BROWSER=brave
+
+
