@@ -29,6 +29,8 @@ Plug 'pelodelfuego/vim-swoop'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'puremourning/vimspector'
 Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
+Plug 'tpope/vim-fugitive'
+Plug 'azidar/firrtl-syntax'
 
 " Initialize plugin system
 call plug#end()
@@ -41,6 +43,9 @@ set wildmenu
 set mouse=a
 set clipboard=unnamedplus
 set autochdir
+set autoread
+au CursorHold * checktime  
+set shortmess-=S
 
 
 nnoremap <SPACE> <Nop>
@@ -67,6 +72,7 @@ nnoremap <Leader>feR :RefreshConfig<CR> :noh<CR>
 nnoremap <Leader>fed :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>fs :w<CR>
 nnoremap <Leader>ff :Leaderf filer --auto-cd<CR>
+nnoremap <Leader>fF :Files<CR>
 nnoremap <Leader>fr :LeaderfMru<CR>
 nnoremap <Leader>fR :Rename <C-R>=expand("%:t")<CR>
 nnoremap <Leader>fD :Unlink
