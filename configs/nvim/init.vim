@@ -1,4 +1,5 @@
 source ~/.config/nvim/plugin/highlight_long_lines.vim
+source ~/.config/nvim/plugin/close_window_by_name.vim
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -31,6 +32,7 @@ Plug 'puremourning/vimspector'
 Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 Plug 'tpope/vim-fugitive'
 Plug 'azidar/firrtl-syntax'
+Plug 'pignacio/vim-yapf-format'
 
 " Initialize plugin system
 call plug#end()
@@ -46,6 +48,16 @@ set autochdir
 set autoread
 au CursorHold * checktime  
 set shortmess-=S
+set scrolloff=6
+
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set shiftwidth=4
+set tabstop=4
+set smarttab
+set expandtab
 
 
 nnoremap <SPACE> <Nop>
@@ -61,6 +73,7 @@ tnoremap <Esc> <C-\><C-n>
 
 " Package manage
 nnoremap <Leader>hpi :PlugInstall<CR>
+nnoremap <Leader>hpc :PlugClean<CR>
 nnoremap <Leader>hpu :PlugUpdate<CR>
 nnoremap <Leader>hpl :PlugStatus<CR>
 
@@ -68,10 +81,12 @@ let g:Lf_ShortcutF = ""
 let g:Lf_ShortcutB = ""
 
 " File menu
+command! CHD :chdir %:h
 nnoremap <Leader>feR :RefreshConfig<CR> :noh<CR>
 nnoremap <Leader>fed :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>fs :w<CR>
 nnoremap <Leader>ff :Leaderf filer --auto-cd<CR>
+nnoremap <Leader>f. :CHD<CR>
 nnoremap <Leader>fF :Files<CR>
 nnoremap <Leader>fr :LeaderfMru<CR>
 nnoremap <Leader>fR :Rename <C-R>=expand("%:t")<CR>
@@ -121,16 +136,21 @@ set splitright
 nnoremap <Leader>w/ :vsp<CR>
 nnoremap <Leader>w_ :sp<CR>
 nnoremap <Leader>wd :q<CR>
+nmap <Leader>w= <C-w>=
 nnoremap <Leader>w<Down> <C-W><C-J>
 nnoremap <Leader>w<Up> <C-W><C-K>
 nnoremap <Leader>w<Right> <C-W><C-L>
 nnoremap <Leader>w<Left> <C-W><C-H>
+nnoremap ,cd :KillWindowNamed [quickrun output]<CR>
+nmap <Leader>cd ,cd
 
+" nnoremap <Leader>t8 :call g:Hll_active()<CR>
 
 " Buffers
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bb :Buffers<CR>
+nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bY :%y<CR>
 nnoremap <Leader>bP ggdG"0P
 
@@ -156,6 +176,7 @@ vmap io iw
 
 " Quickrun 
 nnoremap ,cc :QuickRun<CR>
+nnoremap ,= :call Yapf()<cr>
 
 
 " Statusbar
