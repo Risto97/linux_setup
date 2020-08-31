@@ -33,6 +33,9 @@ Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 Plug 'tpope/vim-fugitive'
 Plug 'azidar/firrtl-syntax'
 Plug 'pignacio/vim-yapf-format'
+Plug 'ton/vim-bufsurf'
+Plug 'honza/vim-snippets'
+Plug 'neomake/neomake'
 
 " Initialize plugin system
 call plug#end()
@@ -147,8 +150,8 @@ nmap <Leader>cd ,cd
 " nnoremap <Leader>t8 :call g:Hll_active()<CR>
 
 " Buffers
-nnoremap <Leader>bn :bn<CR>
-nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bn :BufSurfForward<CR> :CHD<CR>
+nnoremap <Leader>bp :BufSurfBack<CR> :CHD<CR>
 nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bY :%y<CR>
@@ -176,7 +179,7 @@ vmap io iw
 
 " Quickrun 
 nnoremap ,cc :QuickRun<CR>
-nnoremap ,= :call Yapf()<cr>
+nnoremap ,cm :make<CR>
 
 
 " Statusbar
@@ -243,3 +246,22 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+
+"" ############# Formating ##############
+" "" Clang
+" let g:clang_format#style_options = {
+"             \ "AccessModifierOffset" : -4,
+"             \ "AllowShortIfStatementsOnASingleLine" : "true",
+"             \ "AlwaysBreakTemplateDeclarations" : "true",
+"             \ "Standard" : "C++11"}
+"
+" " map to <Leader>cf in C++ code
+" autocmd FileType c,cpp,objc nnoremap <buffer>,= :<C-u>ClangFormat<CR>
+" autocmd FileType c,cpp,objc vnoremap <buffer>,= :ClangFormat<CR>
+" " if you install vim-operator-user
+" " Toggle auto formatting:
+" nmap ,tf :ClangFormatAutoToggle<CR>
+
+"" Python
+" autocmd FileType .py nnoremap ,= :call Yapf()<CR>
