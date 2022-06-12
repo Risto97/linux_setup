@@ -70,9 +70,9 @@ rm ~/.config/.bash_customrc
 ln -s $(pwd)/.bash_customrc ~/.config/
 echo 'source ~/.config/.bash_customrc' > ~/.bashrc
 
-wget https://github.com/sharkdp/bat/releases/download/v0.15.4/bat-v0.15.4-x86_64-unknown-linux-musl.tar.gz
-tar -xzvf bat-v0.15.4-x86_64-unknown-linux-musl.tar.gz
-mv bat-v0.15.4-x86_64-unknown-linux-musl/bat ~/.local/bin
+wget https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-v0.21.0-x86_64-unknown-linux-musl.tar.gz
+tar -xzvf bat-v0.21.0-x86_64-unknown-linux-musl.tar.gz
+mv bat-v0.21.0-x86_64-unknown-linux-musl/bat ~/.local/bin
 rm -rf bat-v*
 
 wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
