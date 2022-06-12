@@ -32,19 +32,13 @@ local on_attach = function(client, bufnr)
     end, bufopts)
 
     -- Diagnostics
-    vim.keymap.set('n', ',dd', function()
-        fzflua.lsp_document_diagnostics()
-    end, bufopts)
-    vim.keymap.set('n', ',dw', function()
-        fzflua.lsp_workspace_diagnostics()
-    end, bufopts)
+    vim.keymap.set('n', ',dd', "<cmd>Trouble document_diagnostics<cr>", bufopts)
+    vim.keymap.set('n', ',dw', "<cmd>Trouble workspace_diagnostics<cr>", bufopts)
 
     vim.keymap.set('n', ',D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', ',rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', ',ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', ',gr', function ()
-        fzflua.lsp_references({ jump_to_single_result = true })
-    end, bufopts)
+    vim.keymap.set('n', ',gr', "<cmd>Trouble lsp_references<cr>", bufopts)
     vim.keymap.set('n', ',=', vim.lsp.buf.formatting, bufopts)
 end
 

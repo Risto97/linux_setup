@@ -4,6 +4,7 @@ source ~/.config/nvim/helpers.vim
 source ~/.config/nvim/plugin/after/vim-which-key.vim
 source ~/.config/nvim/plugin/after/vim-multiple-cursor.vim
 source ~/.config/nvim/plugin/after/leaderf.vim
+source ~/.config/nvim/plugin/quickrun_config.vim
 
 lua require('plugins')
 lua require('lua_line')
@@ -12,6 +13,7 @@ lua require('lsp_setting')
 lua require('fzf_lua')
 lua require('config/treesitter')
 lua require('config/autopairs')
+lua require('config/shade_config')
 
 
 set ic
@@ -82,8 +84,8 @@ nnoremap <Leader>qq :qa<CR>
 nnoremap <Leader>qQ :qa!<CR>
 nnoremap <Leader>qr :SaveSession<CR> :qa<CR>
 nnoremap <Leader>qs :OpenSession<CR>
-let g:session_autosave = 0
-let g:session_autoload = 0
+" let g:session_autosave = 0
+" let g:session_autoload = 0
 
 " Search
 nnoremap <Leader>sc :noh<CR>
@@ -154,12 +156,18 @@ nnoremap ,cm :make<CR>
 set laststatus=2
 
 " Themes
-let g:material_style = "darker"
-colorscheme material
+" let g:material_style = "darker"
+let g:palenight_color_overrides = {
+\    'black': { 'gui': '#000000', "cterm": "0", "cterm16": "0" },
+\}
 
 if (has("termguicolors"))
  set termguicolors
 endif
+" let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+let g:material_theme_style = 'default-community'
+colorscheme doom-one
+set background=dark
 
 " Search result colours
 hi Search ctermbg=52

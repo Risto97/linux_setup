@@ -35,20 +35,12 @@ return require('packer').startup(function(use)
     use 'thinca/vim-quickrun'
     use 'moll/vim-bbye'
     use 'airblade/vim-rooter'
-    use 'xolox/vim-session'
+    -- use 'xolox/vim-session'
     use 'xolox/vim-misc'
     use 'pelodelfuego/vim-swoop'
     use 'kdheepak/lazygit.nvim'
     use 'dominikduda/vim_current_word'
     use 'ton/vim-bufsurf'
-
-    use {
-      "startup-nvim/startup.nvim",
-      requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-      config = function()
-        require"startup".setup()
-      end
-    }
 
     -- status line
     use {
@@ -86,6 +78,17 @@ return require('packer').startup(function(use)
         wants = "nvim-treesitter",
         event = "InsertEnter",
     }
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
 
     -- FZF
     use  { 'junegunn/fzf', run = './install --bin', }
@@ -95,6 +98,7 @@ return require('packer').startup(function(use)
     }
 
     -- Themes and colors
-    use { 'marko-cerovac/material.nvim' }
+    use 'NTBBloodbath/doom-one.nvim'
+    use 'sunjon/shade.nvim'
 end)
 
