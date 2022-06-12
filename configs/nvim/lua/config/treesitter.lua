@@ -9,9 +9,9 @@ require 'nvim-treesitter.configs'.setup {
     ignore_install = { "javascript" },
 
     autopairs = { enable = true },
-    indent = {
-        enable = true
-    },
+    -- indent = {
+    --     enable = true
+    -- },
     endwise = { enable = true },
 
     highlight = {
