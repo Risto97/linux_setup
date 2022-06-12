@@ -64,6 +64,15 @@ let g:which_key_map.w.d = 'delete window'
 "let g:which_key_map.w."Left" = 'Focus Left'
 "let g:which_key_map.w.→ = 'Focus Right'
 
+let g:which_key_map.d = { 'name' : '+diff' }
+
+let g:which_key_map.g = { 'name' : '+git' }
+
+
+let g:which_key_map.h = { 'name' : '+packer' }
+" let g:which_key_map.h.p = { 'name' : '+packer' }
+
+let g:which_key_map.h = { 'name' : '+quit/session' }
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

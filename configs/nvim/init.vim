@@ -1,44 +1,18 @@
 source ~/.config/nvim/plugin/highlight_long_lines.vim
 source ~/.config/nvim/plugin/close_window_by_name.vim
+source ~/.config/nvim/helpers.vim
+source ~/.config/nvim/plugin/after/vim-which-key.vim
+source ~/.config/nvim/plugin/after/vim-multiple-cursor.vim
+source ~/.config/nvim/plugin/after/leaderf.vim
 
-call plug#begin('~/.config/nvim/plugged')
+lua require('plugins')
+lua require('lua_line')
+lua require('cmp_config')
+lua require('lsp_setting')
+lua require('fzf_lua')
+lua require('config/treesitter')
+lua require('config/autopairs')
 
-Plug 'Yggdroot/LeaderF'
-Plug 'tamago324/LeaderF-filer'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-Plug 'chrisbra/colorizer'
-Plug 'ryanoasis/vim-devicons'
-Plug 'kien/ctrlp.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'dominikduda/vim_current_word'
-Plug 'liuchengxu/vim-which-key'
-Plug 'tomtom/tcomment_vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'thinca/vim-quickrun'
-Plug 'moll/vim-bbye'
-Plug 'airblade/vim-rooter'
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'
-Plug 'pelodelfuego/vim-swoop'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'puremourning/vimspector'
-Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
-Plug 'tpope/vim-fugitive'
-Plug 'azidar/firrtl-syntax'
-Plug 'pignacio/vim-yapf-format'
-Plug 'ton/vim-bufsurf'
-Plug 'honza/vim-snippets'
-Plug 'neomake/neomake'
-
-" Initialize plugin system
-call plug#end()
 
 set ic
 set hlsearch
@@ -62,6 +36,9 @@ set tabstop=4
 set smarttab
 set expandtab
 
+" FZF
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:40%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let $FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden -g '!.git*'"
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -75,10 +52,10 @@ nnoremap <Leader><CR> :sp<CR> :terminal<CR> :resize 10<CR> i
 tnoremap <Esc> <C-\><C-n>
 
 " Package manage
-nnoremap <Leader>hpi :PlugInstall<CR>
-nnoremap <Leader>hpc :PlugClean<CR>
-nnoremap <Leader>hpu :PlugUpdate<CR>
-nnoremap <Leader>hpl :PlugStatus<CR>
+nnoremap <Leader>hpi :PackerInstall<CR>
+nnoremap <Leader>hpc :PackerClean<CR>
+nnoremap <Leader>hpu :PackerUpdate<CR>
+nnoremap <Leader>hpl :PackerStatus<CR>
 
 let g:Lf_ShortcutF = ""
 let g:Lf_ShortcutB = ""
@@ -90,18 +67,15 @@ nnoremap <Leader>fed :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>fs :w<CR>
 nnoremap <Leader>ff :Leaderf filer --auto-cd<CR>
 nnoremap <Leader>f. :CHD<CR>
-nnoremap <Leader>fF :Files<CR>
+nnoremap <Leader>fF :FzfLua files<CR>
 nnoremap <Leader>fr :LeaderfMru<CR>
-nnoremap <Leader>fR :Rename <C-R>=expand("%:t")<CR>
-nnoremap <Leader>fD :Unlink
+nnoremap <Leader>fR :call RenameFile()<CR>
+nnoremap <Leader>fD :call delete(expand('%'))
 
 " Toggles
 nnoremap <Leader>tn :set number!<CR>
 " Highlight long lines, need to clear matching
 nnoremap <Leader>t8 :call g:Hll_active()<CR>
-
-" Clap
-nnoremap <Leader>dc :Clap<CR>
 
 " Quit Menu
 nnoremap <Leader>qq :qa<CR>
@@ -114,14 +88,8 @@ let g:session_autoload = 0
 " Search
 nnoremap <Leader>sc :noh<CR>
 " RipGrep word under cursor in directory
-noremap <Leader>sp :<C-u><C-w>call RGProjectString(expand("<cword>"))<CR>
-" RipGrep Visual selection in directory
-xnoremap <Leader>sp  :<C-u><C-w>call RGProjectString(VisualSelection())<CR>
-
-function! RGProjectString(query)
-  let initial_command = printf(":RGProject %s", a:query)
-  execute initial_command
-endfunction
+noremap <Leader>sp :<cmd>lua require('fzf-lua').grep_project({ fzf_opts={ ['--query']=vim.fn.expand('<cword>') }})<CR>
+xnoremap <Leader>sp :<C-u><C-w>lua require('fzf-lua').grep_project({ fzf_opts={ ['--query']=vim.fn.VisualSelection() }})<CR>
 
 " search selected word literally only in current buffer
 " noremap <Leader>ss :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", leaderf#Rg#visual())<CR><CR>
@@ -130,7 +98,7 @@ vmap <Leader>ss :call SwoopSelection()<CR>
 nnoremap <*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " Project
-noremap <Leader>pf :RGProjectFiles<CR>
+" noremap <Leader>pf :RGProjectFiles<CR>
 
 
 " Window Menu
@@ -152,7 +120,7 @@ nmap <Leader>cd ,cd
 " Buffers
 nnoremap <Leader>bn :BufSurfForward<CR> :CHD<CR>
 nnoremap <Leader>bp :BufSurfBack<CR> :CHD<CR>
-nnoremap <Leader>bb :Buffers<CR>
+nnoremap <Leader>bb :FzfLua buffers<CR>
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bY :%y<CR>
 nnoremap <Leader>bP ggdG"0P
@@ -186,50 +154,24 @@ nnoremap ,cm :make<CR>
 set laststatus=2
 
 " Themes
-colorscheme space-vim-dark
+let g:material_style = "darker"
+colorscheme material
 
+if (has("termguicolors"))
+ set termguicolors
+endif
 
 " Search result colours
 hi Search ctermbg=52
 hi Search ctermfg=White
 
-source ~/.config/nvim/plugin/after/vim-which-key.vim
-source ~/.config/nvim/coc.vim
-source ~/.config/nvim/plugin/after/vim-multiple-cursor.vim
-source ~/.config/nvim/plugin/after/leaderf.vim
-source ~/.config/nvim/helpers.vim
-source ~/.config/nvim/plugged/fzf.vim/autoload/fzf/vim.vim
+" source ~/.config/nvim/plugged/fzf.vim/autoload/fzf/vim.vim
 
-command! -bang ProjectFiles call fzf#vim#files('~/pulp', <bang>0)
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-
-
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:40%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-let $FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden -g '!.git*'"
-
-function! RipgrepFzf(query, fullscreen, path)
-	let transformer  =  "| awk 'BEGIN{ FS=\":\"; OFS=FS } {n=split($1, a, \"/\"); $3=$3 \":\" a[n] \":\" $2 \":\" $3; print}'"
-	let cmd_fmt = "rg --column --line-number --no-heading --hidden -g \"!{.git,node_modules,vendor}/*\" --color=always --smart-case %s %s "
-	let rg_cmd = printf(cmd_fmt, shellescape(a:query), a:path)
-	let reload_command = printf(cmd_fmt..transformer, '{q}', a:path)
-	let spec={'options': ['--delimiter=:', '--with-nth=4..', '--query', a:query, '--bind', 'change:reload:'.reload_command] }
-        echo "RG in" a:path
-  	call fzf#vim#grep(rg_cmd..transformer, 1, fzf#vim#with_preview(spec) , a:fullscreen)
-endfunction
-
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0, '~')
-command! -nargs=* -bang RGProject call RipgrepFzf(<q-args>, <bang>0, FindRootDirectory())
-command! -bang RGProjectFiles call fzf#vim#files(FindRootDirectory(), <bang>0)
 
 " Mapping to exit Fzf with Esc
 tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
 filetype plugin on
-
-"" Vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
 
 
 "" Create directory on save file
@@ -248,20 +190,3 @@ augroup BWCCreateDir
 augroup END
 
 
-"" ############# Formating ##############
-" "" Clang
-" let g:clang_format#style_options = {
-"             \ "AccessModifierOffset" : -4,
-"             \ "AllowShortIfStatementsOnASingleLine" : "true",
-"             \ "AlwaysBreakTemplateDeclarations" : "true",
-"             \ "Standard" : "C++11"}
-"
-" " map to <Leader>cf in C++ code
-" autocmd FileType c,cpp,objc nnoremap <buffer>,= :<C-u>ClangFormat<CR>
-" autocmd FileType c,cpp,objc vnoremap <buffer>,= :ClangFormat<CR>
-" " if you install vim-operator-user
-" " Toggle auto formatting:
-" nmap ,tf :ClangFormatAutoToggle<CR>
-
-"" Python
-" autocmd FileType .py nnoremap ,= :call Yapf()<CR>
