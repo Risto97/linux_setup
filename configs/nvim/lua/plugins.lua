@@ -1,7 +1,7 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local packer_install_dir = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local packer_install_dir = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 local plug_url_format = 'https://github.com/%s'
 
@@ -10,8 +10,8 @@ local install_cmd = string.format('10split |term git clone --depth=1 %s %s', pac
 
 if fn.empty(fn.glob(packer_install_dir)) > 0 then
     print("installing")
-  vim.api.nvim_echo({{'Installing packer.nvim', 'Type'}}, true, {})
-  vim.api.nvim_exec(install_cmd, true)
+    vim.api.nvim_echo({ { 'Installing packer.nvim', 'Type' } }, true, {})
+    vim.api.nvim_exec(install_cmd, true)
 end
 
 
@@ -32,7 +32,6 @@ return require('packer').startup(function(use)
     use 'tomtom/tcomment_vim'
     use 'tpope/vim-surround'
     use 'terryma/vim-multiple-cursors'
-    use 'thinca/vim-quickrun'
     use 'moll/vim-bbye'
     use 'airblade/vim-rooter'
     -- use 'xolox/vim-session'
@@ -41,16 +40,20 @@ return require('packer').startup(function(use)
     use 'dominikduda/vim_current_word'
     use 'ton/vim-bufsurf'
 
+    -- Runners
+    use 'thinca/vim-quickrun'
+    use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+
     -- status line
     use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- LSP install
     use {
-    "williamboman/nvim-lsp-installer",
-    "neovim/nvim-lspconfig",
+        "williamboman/nvim-lsp-installer",
+        "neovim/nvim-lspconfig",
     }
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -66,7 +69,7 @@ return require('packer').startup(function(use)
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
     use {
-      "ray-x/lsp_signature.nvim",
+        "ray-x/lsp_signature.nvim",
     }
     use {
         "windwp/nvim-autopairs",
@@ -77,34 +80,40 @@ return require('packer').startup(function(use)
         wants = "nvim-treesitter",
         event = "InsertEnter",
     }
+
+    use 'sbdchd/neoformat'
     use {
-      "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("trouble").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
-      end
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
     }
 
     -- GIT
     use {
-      'lewis6991/gitsigns.nvim',
-      -- tag = 'release' -- To use the latest release
+        'lewis6991/gitsigns.nvim',
+        -- tag = 'release' -- To use the latest release
     }
     use 'kdheepak/lazygit.nvim'
 
     -- FZF
-    use  { 'junegunn/fzf', run = './install --bin', }
+    use { 'junegunn/fzf', run = './install --bin', }
     use { 'ibhagwan/fzf-lua',
-      -- optional for icon support
-      requires = { 'kyazdani42/nvim-web-devicons' }
+        -- optional for icon support
+        requires = { 'kyazdani42/nvim-web-devicons' }
     }
 
     -- Themes and colors
     use 'NTBBloodbath/doom-one.nvim'
     use 'sunjon/shade.nvim'
-end)
 
+
+    -- Navigation
+    use 'https://gitlab.com/yorickpeterse/nvim-window.git'
+    use 'ggandor/lightspeed.nvim'
+end)

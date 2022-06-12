@@ -15,7 +15,12 @@ lua require('config/treesitter')
 lua require('config/autopairs')
 lua require('config/shade_config')
 lua require('config/gitsigns_config')
+lua require('config/sniprun_config')
+lua require('config/nvim_window_config')
+lua require('utils')
+lua require('keybindings')
 
+" hi BlackOnLightYellow guifg=#000000 guibg=#f2de91
 
 set ic
 set hlsearch
@@ -62,6 +67,8 @@ nnoremap <Leader>hpl :PackerStatus<CR>
 
 let g:Lf_ShortcutF = ""
 let g:Lf_ShortcutB = ""
+
+" nnoremap ,k :Neoformat<CR>
 
 " File menu
 command! CHD :chdir %:h
