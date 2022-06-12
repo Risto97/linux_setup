@@ -14,6 +14,7 @@ lua require('fzf_lua')
 lua require('config/treesitter')
 lua require('config/autopairs')
 lua require('config/shade_config')
+lua require('config/gitsigns_config')
 
 
 set ic

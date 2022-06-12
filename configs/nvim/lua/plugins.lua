@@ -38,7 +38,6 @@ return require('packer').startup(function(use)
     -- use 'xolox/vim-session'
     use 'xolox/vim-misc'
     use 'pelodelfuego/vim-swoop'
-    use 'kdheepak/lazygit.nvim'
     use 'dominikduda/vim_current_word'
     use 'ton/vim-bufsurf'
 
@@ -89,6 +88,13 @@ return require('packer').startup(function(use)
         }
       end
     }
+
+    -- GIT
+    use {
+      'lewis6991/gitsigns.nvim',
+      -- tag = 'release' -- To use the latest release
+    }
+    use 'kdheepak/lazygit.nvim'
 
     -- FZF
     use  { 'junegunn/fzf', run = './install --bin', }
