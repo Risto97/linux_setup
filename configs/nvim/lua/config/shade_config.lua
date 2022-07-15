@@ -1,9 +1,9 @@
 require'shade'.setup({
-  overlay_opacity = 75,
+  overlay_opacity = 85,
   opacity_step = 1,
   keys = {
     -- brightness_up    = '<C-Up>',
     -- brightness_down  = '<C-Down>',
-    toggle           = '<space><BS>',
+    toggle           = '<space>t<BS>',
   }
 })

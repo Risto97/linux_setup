@@ -14,10 +14,6 @@ if fn.empty(fn.glob(packer_install_dir)) > 0 then
     vim.api.nvim_exec(install_cmd, true)
 end
 
-
-
-
-
 vim.cmd("packadd packer.nvim")
 
 
@@ -28,7 +24,7 @@ return require('packer').startup(function(use)
     -- use 'rstacruz/vim-closer'
     use 'Yggdroot/LeaderF'
     use 'tamago324/LeaderF-filer'
-    use 'liuchengxu/vim-which-key'
+    use 'folke/which-key.nvim'
     use 'tomtom/tcomment_vim'
     use 'tpope/vim-surround'
     use 'terryma/vim-multiple-cursors'

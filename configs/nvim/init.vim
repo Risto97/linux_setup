@@ -1,7 +1,6 @@
 source ~/.config/nvim/plugin/highlight_long_lines.vim
 source ~/.config/nvim/plugin/close_window_by_name.vim
 source ~/.config/nvim/helpers.vim
-source ~/.config/nvim/plugin/after/vim-which-key.vim
 source ~/.config/nvim/plugin/after/vim-multiple-cursor.vim
 source ~/.config/nvim/plugin/after/leaderf.vim
 source ~/.config/nvim/plugin/quickrun_config.vim
@@ -19,6 +18,7 @@ lua require('config/sniprun_config')
 lua require('config/nvim_window_config')
 lua require('utils')
 lua require('keybindings')
+lua require('config/which-key')
 
 " hi BlackOnLightYellow guifg=#000000 guibg=#f2de91
 
@@ -59,7 +59,7 @@ command! RefreshConfig :source $MYVIMRC
 nnoremap <Leader><CR> :sp<CR> :terminal<CR> :resize 10<CR> i
 tnoremap <Esc> <C-\><C-n>
 
-" Package manage
+" Package manager
 nnoremap <Leader>hpi :PackerInstall<CR>
 nnoremap <Leader>hpc :PackerClean<CR>
 nnoremap <Leader>hpu :PackerUpdate<CR>
@@ -85,13 +85,13 @@ nnoremap <Leader>fD :call delete(expand('%'))
 " Toggles
 nnoremap <Leader>tn :set number!<CR>
 " Highlight long lines, need to clear matching
-nnoremap <Leader>t8 :call g:Hll_active()<CR>
+" nnoremap <Leader>t8 :call g:Hll_active()<CR>
 
 " Quit Menu
 nnoremap <Leader>qq :qa<CR>
 nnoremap <Leader>qQ :qa!<CR>
-nnoremap <Leader>qr :SaveSession<CR> :qa<CR>
-nnoremap <Leader>qs :OpenSession<CR>
+" nnoremap <Leader>qr :SaveSession<CR> :qa<CR>
+" nnoremap <Leader>qs :OpenSession<CR>
 " let g:session_autosave = 0
 " let g:session_autoload = 0
 
@@ -103,6 +103,7 @@ xnoremap <Leader>sp :<C-u><C-w>lua require('fzf-lua').grep_project({ fzf_opts={ 
 
 " search selected word literally only in current buffer
 " noremap <Leader>ss :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", leaderf#Rg#visual())<CR><CR>
+let g:swoopUseDefaultKeyMap = 0
 nnoremap <Leader>ss :call SwoopPattern("<C-R>=expand("<cword>")<CR>")<CR>
 vmap <Leader>ss :call SwoopSelection()<CR>
 nnoremap <*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
@@ -118,12 +119,12 @@ nnoremap <Leader>w/ :vsp<CR>
 nnoremap <Leader>w_ :sp<CR>
 nnoremap <Leader>wd :q<CR>
 nmap <Leader>w= <C-w>=
-nnoremap <Leader>w<Down> <C-W><C-J>
-nnoremap <Leader>w<Up> <C-W><C-K>
-nnoremap <Leader>w<Right> <C-W><C-L>
-nnoremap <Leader>w<Left> <C-W><C-H>
+nnoremap <Leader>w<Down> <C-W><C-J> :CHD<CR>
+nnoremap <Leader>w<Up> <C-W><C-K> :CHD<CR>
+nnoremap <Leader>w<Right> <C-W><C-L> :CHD<CR>
+nnoremap <Leader>w<Left> <C-W><C-H> :CHD<CR>
 nnoremap ,cd :KillWindowNamed [quickrun output]<CR>
-nmap <Leader>cd ,cd
+" nmap <Leader>cd ,cd
 
 " nnoremap <Leader>t8 :call g:Hll_active()<CR>
 
@@ -148,7 +149,7 @@ nnoremap <Leader>dw :windo diffthis<CR>
 nnoremap <Leader>dq :windo diffoff<CR>
 
 " Command Menu
-nnoremap <Leader><Leader> :
+" nnoremap <Leader><Leader> :
 " execute "set <M-x>=\ex"
 nnoremap <M-x> :
 

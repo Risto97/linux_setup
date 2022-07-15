@@ -45,7 +45,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local servers = {'jedi_language_server', 'pyright', 'sumneko_lua'}
+local servers = {'jedi_language_server', 'pyright', 'sumneko_lua', 'clangd'}
 local nvim_lsp = require("lspconfig")
 
 for _, lsp in ipairs(servers) do
