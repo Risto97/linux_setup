@@ -46,6 +46,12 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+luasnip.config.setup({
+  region_check_events = "CursorHold,InsertLeave",
+--   -- those are for removing deleted snippets, also a common problem
+  delete_check_events = "TextChanged,InsertEnter",
+  history = false,
+})
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -71,7 +77,7 @@ cmp.setup {
                 cmp.select_next_item()
             elseif luasnip.expandable() then
                 luasnip.expand()
-            elseif luasnip.expand_or_jumpable() then
+            elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
             elseif check_backspace() then
                 fallback()
@@ -85,8 +91,6 @@ cmp.setup {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
             else
                 fallback()
             end
@@ -147,7 +151,7 @@ local lsp_signature_cfg = {
     -- This setting only take effect in insert mode, it does not affect signature help in normal
     -- mode, 10 by default
 
-    floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+    floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
 
     floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
     -- will set to true when fully tested, set to false will use whichever side has more space
