@@ -96,6 +96,7 @@ return require('packer').startup(function(use)
         -- tag = 'release' -- To use the latest release
     }
     use 'kdheepak/lazygit.nvim'
+    use 'tpope/vim-fugitive'
 
     -- FZF
     use { 'junegunn/fzf', run = './install --bin', }

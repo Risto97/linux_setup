@@ -62,10 +62,13 @@ require('gitsigns').setup {
     end, {expr=true})
 
     -- Actions
-    map({'n', 'v'}, '<leader>ghs', ':Gitsigns stage_hunk<CR>')
-    map({'n', 'v'}, '<leader>ghr', ':Gitsigns reset_hunk<CR>')
-    map('n', '<leader>ghu', gs.undo_stage_hunk)
-    map('n', '<leader>ghp', gs.preview_hunk)
+    -- map({'n', 'v'}, '<leader>ghs', ':Gitsigns stage_hunk<CR>')
+    -- map({'n', 'v'}, '<leader>ghr', ':Gitsigns reset_hunk<CR>')
+    -- map('n', '<leader>ghu', gs.undo_stage_hunk)
+    -- map('n', '<leader>ghp', gs.preview_hunk)
+
+    map('n', '<leader>ghb', ':0Gclog<CR>:cclose<CR>')
+    map('n', '<leader>ghq', ':Gedit<CR>')
 
     map('n', '<leader>gfs', gs.stage_buffer)
     map('n', '<leader>gfR', gs.reset_buffer)

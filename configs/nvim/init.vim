@@ -13,7 +13,7 @@ lua require('fzf_lua')
 lua require('config/treesitter')
 lua require('config/autopairs')
 lua require('config/shade_config')
-lua require('config/gitsigns_config')
+lua require('config/git_config')
 lua require('config/sniprun_config')
 lua require('config/nvim_window_config')
 lua require('utils')
@@ -111,6 +111,10 @@ nnoremap <*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " Project
 " noremap <Leader>pf :RGProjectFiles<CR>
 
+" Line edits
+" Reverse
+vmap <Leader>lr :'<,'>!tac<CR>
+
 
 " Window Menu
 set splitbelow
@@ -206,4 +210,12 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+augroup systemrdl_ft
+  au!
+  autocmd BufNewFile,BufRead *.rdl   set syntax=systemrdl
+augroup END
 
+augroup jinja_ft
+  au!
+  autocmd BufNewFile,BufRead *.j2   set syntax=jinja
+augroup END
