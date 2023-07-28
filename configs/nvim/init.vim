@@ -213,9 +213,14 @@ augroup END
 augroup systemrdl_ft
   au!
   autocmd BufNewFile,BufRead *.rdl   set syntax=systemrdl
+  autocmd BufNewFile,BufRead *.rdl   set filetype=systemrdl
 augroup END
 
 augroup jinja_ft
   au!
   autocmd BufNewFile,BufRead *.j2   set syntax=jinja
+augroup END
+augroup lds_ft
+  au!
+  autocmd BufNewFile,BufRead *.lds   set syntax=ld
 augroup END

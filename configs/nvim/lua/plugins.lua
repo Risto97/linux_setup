@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
     use 'Yggdroot/LeaderF'
     use 'tamago324/LeaderF-filer'
     use 'folke/which-key.nvim'
-    use 'tomtom/tcomment_vim'
+    use 'numToStr/Comment.nvim'
     use 'tpope/vim-surround'
     use 'terryma/vim-multiple-cursors'
     use 'moll/vim-bbye'
