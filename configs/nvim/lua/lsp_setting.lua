@@ -43,9 +43,9 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = {'jedi_language_server', 'pyright', 'sumneko_lua', 'clangd'}
+local servers = {'jedi_language_server', 'pyright', 'clangd'}
 local nvim_lsp = require("lspconfig")
 
 for _, lsp in ipairs(servers) do
@@ -55,15 +55,4 @@ for _, lsp in ipairs(servers) do
     }
 
 end
-
--- lua configuration
-nvim_lsp.sumneko_lua.setup{
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' } -- allow vim global, remove warnings
-            }
-        }
-    }
-}
 

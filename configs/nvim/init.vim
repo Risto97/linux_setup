@@ -1,8 +1,8 @@
 source ~/.config/nvim/plugin/highlight_long_lines.vim
 source ~/.config/nvim/plugin/close_window_by_name.vim
 source ~/.config/nvim/helpers.vim
-source ~/.config/nvim/plugin/after/vim-multiple-cursor.vim
 source ~/.config/nvim/plugin/after/leaderf.vim
+source ~/.config/nvim/plugin/after/neoformat.vim
 source ~/.config/nvim/plugin/quickrun_config.vim
 
 lua require('plugins')
@@ -12,7 +12,8 @@ lua require('lsp_setting')
 lua require('fzf_lua')
 lua require('config/treesitter')
 lua require('config/autopairs')
-lua require('config/shade_config')
+"" lua require('config/shade_config')
+lua require('config/comment')
 lua require('config/git_config')
 lua require('config/sniprun_config')
 lua require('config/nvim_window_config')
@@ -98,7 +99,7 @@ nnoremap <Leader>qQ :qa!<CR>
 " Search
 nnoremap <Leader>sc :noh<CR>
 " RipGrep word under cursor in directory
-noremap <Leader>sp :<cmd>lua require('fzf-lua').grep_project({ fzf_opts={ ['--query']=vim.fn.expand('<cword>') }})<CR>
+noremap <Leader>sp :<cmd>lua require('fzf-lua').grep_project({ fzf_opts={ ['--query']=vim.fn.expand('<cword>') }})<CR><CR>
 xnoremap <Leader>sp :<C-u><C-w>lua require('fzf-lua').grep_project({ fzf_opts={ ['--query']=vim.fn.VisualSelection() }})<CR>
 
 " search selected word literally only in current buffer

@@ -22,12 +22,22 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- use 'rstacruz/vim-closer'
-    use 'Yggdroot/LeaderF'
+    
+    use {'Yggdroot/LeaderF',
+        commit = '162080a'
+    }
     use 'tamago324/LeaderF-filer'
     use 'folke/which-key.nvim'
-    use 'numToStr/Comment.nvim'
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
     use 'tpope/vim-surround'
     use 'terryma/vim-multiple-cursors'
+    use 'mg979/vim-visual-multi'
+
     use 'moll/vim-bbye'
     use 'airblade/vim-rooter'
     -- use 'xolox/vim-session'
