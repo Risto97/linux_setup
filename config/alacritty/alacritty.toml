@@ -1,0 +1,19 @@
+[font]
+size = 11.0
+
+[font.normal]
+family = "SauceCodePro Nerd Font Mono"
+style = "Medium"
+
+[font.bold]
+family = "SauceCodePro Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "SauceCodePro Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "SauceCodePro Nerd Font Mono"
+style = "Bold Italic"
+
