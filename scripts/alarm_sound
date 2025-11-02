@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-mpv --loop-file $HOME/linux_setup/sounds/alarm.wav &
-pid1=$!
-
-zenity --info --text="Alarm activated"
-
-kill $pid1

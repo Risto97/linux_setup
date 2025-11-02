@@ -1,5 +1,0 @@
-#!/bin/bash
-
-updatedb -e "/media /mnt" -l 0 -o  /tmp/search_local_tmp
-
-locate -d /tmp/search_local_tmp "" | rofi -threads 0 -width 100 -dmenu -i -p "locate:" | xargs -r -0 xdg-open

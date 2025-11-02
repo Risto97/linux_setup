@@ -1,6 +1,0 @@
-#!/bin/bash
-
-rm /tmp/search_tmp
-updatedb -U $(pwd) -l 0 -o /tmp/search_tmp
-
-locate -d /tmp/search_tmp "" | rofi -threads 0 -width 100 -dmenu -i -p "locate:" | xargs -r -0 xdg-open

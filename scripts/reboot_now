@@ -1,8 +1,0 @@
-#!/bin/bash
-
-ret_val=$(zenity --question --text="Reboot?"; echo $?)
-
-if [ $ret_val != 1 ]
-then
-    reboot
-fi
