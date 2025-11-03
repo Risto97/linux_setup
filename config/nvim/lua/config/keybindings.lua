@@ -65,6 +65,7 @@ vim.keymap.set('n', ',rn', vim.lsp.buf.rename, lsp_opts, { desc = "Rename symbol
 vim.keymap.set('n', ',ca', vim.lsp.buf.code_action, lsp_opts, { desc = "Show code actions" })
 -- vim.keymap.set('n', ',gr', "<cmd>Trouble lsp_references<cr>", lsp_opts)
 vim.keymap.set('n', ',=', vim.lsp.buf.format, { desc = "Format buffer" })
+vim.api.nvim_set_keymap("n", ",ng", ":lua require('neogen').generate()<CR>", lsp_opts)
 
 
 ----------- Terminal mode ----------------------

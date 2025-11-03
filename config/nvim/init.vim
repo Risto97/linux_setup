@@ -10,6 +10,7 @@ lua require("config.telescope")
 lua require("config.filetypes")
 lua require("config.lsp")
 lua require("config.cmp")
+lua require("config.treesitter")
 
 set ic                        " Ignore case when searching
 set hlsearch                  " Highlight search matches
@@ -44,4 +45,3 @@ set splitright                " Split and focus right
 
 set laststatus=2              " Always show statusline
 
-"autocmd BufNewFile,BufRead *.rdl set syntax=systemrdl filetype=systemrdl commentstring=// %s

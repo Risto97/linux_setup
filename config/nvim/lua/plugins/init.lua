@@ -68,5 +68,14 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+    },
+    {
+    "danymat/neogen",
+    config = true,
+    version = "*"
+    },
 
 }
