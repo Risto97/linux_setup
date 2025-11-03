@@ -11,6 +11,7 @@ lua require("config.filetypes")
 lua require("config.lsp")
 lua require("config.cmp")
 lua require("config.treesitter")
+lua require("config.neogen")
 
 set ic                        " Ignore case when searching
 set hlsearch                  " Highlight search matches
