@@ -9,8 +9,8 @@ vim.keymap.set("n", "<Leader>fF", ":Telescope find_files<CR>", { desc = 'Find fi
 vim.keymap.set("n", "<Leader>fD", helpers.delete_file, { desc = 'Delete the current file' })
 vim.keymap.set('n', '<Leader>fR', helpers.rename_file, { desc = 'Rename current file' })
 
-vim.keymap.set('n', '<Leader>bp', ':bprevious<CR>', { desc = 'Buffer previous' })
-vim.keymap.set('n', '<Leader>bn', ':bnext<CR>', { desc = 'Buffer next' })
+vim.keymap.set('n', '<Leader>bp', ':BufSurfBack<CR>', { desc = 'Buffer previous' })
+vim.keymap.set('n', '<Leader>bn', ':BufSurfForward<CR>', { desc = 'Buffer next' })
 vim.keymap.set('n', '<Leader>bb', ':Telescope buffers<CR>', { desc = 'Browse buffers' })
 vim.keymap.set('n', '<Leader>bd', ':bp<bar>sp<bar>bn<bar>bd<CR>',
     { desc = 'Close buffer, without disturbing the window layout' })
