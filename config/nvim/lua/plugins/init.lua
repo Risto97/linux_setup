@@ -77,5 +77,6 @@ return {
     config = true,
     version = "*"
     },
+    { "ton/vim-bufsurf" },
 
 }
