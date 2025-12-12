@@ -36,6 +36,7 @@ require("telescope").setup {
     pickers = {
         oldfiles = {
             theme = "ivy",
+            path_display = { "smart" },
         },
         diagnostics = {
             theme = "ivy",
