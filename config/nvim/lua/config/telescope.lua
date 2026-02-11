@@ -26,9 +26,11 @@ require("telescope").setup {
                 ["i"] = {
                     -- your custom insert mode mappings
                     ["<Left>"] = fb_actions.goto_parent_dir,
+                    ["<Tab>"] = ts_actions.select_default,
                 },
                 ["n"] = {
                     -- your custom normal mode mappings
+                    ["<Tab>"] = ts_actions.select_default,
                 },
             },
         },
